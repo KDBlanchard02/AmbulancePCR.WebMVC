@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmbulanceCrewMember.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="PatientCareReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

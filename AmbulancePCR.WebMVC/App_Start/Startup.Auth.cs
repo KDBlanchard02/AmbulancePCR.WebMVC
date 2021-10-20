@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using AmbulancePCR.WebMVC.Models;
+using AmbulancePCR.Data;
 
 namespace AmbulancePCR.WebMVC
 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AmbulancePCR.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Device.Location;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AmbulancePCR.Data
+namespace AmbulancePCR.Models
 {
-    public class PatientCareReport
+    public class PCRCreate
     {
         public Guid AuthorID { get; set; }
         [Required]

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using AmbulancePCR.WebMVC.Models;
+using AmbulancePCR.Data;
 
 namespace AmbulancePCR.WebMVC
 {
