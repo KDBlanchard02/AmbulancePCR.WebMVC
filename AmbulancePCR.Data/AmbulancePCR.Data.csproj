@@ -55,15 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assessment.cs" />
-    <Compile Include="Destination.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Incident.cs" />
-    <Compile Include="Narrative.cs" />
-    <Compile Include="PatientInformation.cs" />
+    <Compile Include="PatientCareReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Timeline.cs" />
-    <Compile Include="Vitals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

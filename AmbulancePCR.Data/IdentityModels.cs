@@ -32,6 +32,8 @@ namespace AmbulancePCR.Data
             return new ApplicationDbContext();
         }
 
+        public DbSet<PatientCareReport> PtCareReports { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
