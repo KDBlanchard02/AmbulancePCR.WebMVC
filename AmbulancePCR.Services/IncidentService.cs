@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace AmbulancePCR.Services
 {
-    public class PCRService
+    public class IncidentService
     {
         private readonly Guid _userId;
 
-        public PCRService(Guid userId)
+        public IncidentService(Guid userId)
         {
             _userId = userId;
         }
@@ -29,7 +29,6 @@ namespace AmbulancePCR.Services
                     CmsLevel = model.CmsLevel,
                     VehicleNumber = model.VehicleNumber,
                     IncidentDate = model.IncidentDate,
-                    
 
                     LoadMileage = model.LoadMileage,
                     PrimaryCareProvider = model.PrimaryCareProvider,
@@ -60,7 +59,8 @@ namespace AmbulancePCR.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                PatientInformation patientInformation = new PatientInformation();
+                var incidentNum = from c in ctx.Incidents select c.IncidentNumber;
+                var pt = (from x in ctx.PatientInformation where x.IncidentNumber.Equals(incidentNum) select x.PtLastName).ToString();
 
                 var query =
                     ctx
@@ -73,7 +73,7 @@ namespace AmbulancePCR.Services
                             IncidentNumber = e.IncidentNumber,
                             AuthorID = e.AuthorID,
                             IncidentDate = e.IncidentDate,
-                            PtLastName = patientInformation.PtLastName,
+                            PtLastName = pt,
                             PrimaryCareProvider = e.PrimaryCareProvider
                         }
                         );

@@ -23,7 +23,14 @@ namespace AmbulancePCR.Data
         [Display(Name = "Diastolic Blood Pressure")]
         public int DiastolicBloodPressure { get; set; }
         [Display(Name = "Mean Pressure")]
-        public int MeanPressure { get; set; }
+        public int MeanPressure 
+        {
+            get
+            {
+                int mean = (DiastolicBloodPressure + SystolicBloodPressure) / 2;
+                return mean;
+            }
+        }
         [Required]
         [Display(Name = "Heart Rate")]
         public int HeartRate { get; set; }
@@ -49,7 +56,14 @@ namespace AmbulancePCR.Data
         [Display(Name = "GCS (Eyes)")]
         public int GCSEyes { get; set; }
         [Display(Name = "GCS (Total)")]
-        public int GCSTotal { get; set; }
+        public int GCSTotal 
+        { 
+            get
+            {
+                int total = (GCSEyes + GCSMotor + GCSVerbal);
+                return total;
+            }
+        }
         [Display(Name = "Blood Glucose")]
         public int BloodGlucose { get; set; }
         [Display(Name = "Temperature (°F)")]

@@ -54,8 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PCRService.cs" />
+    <Compile Include="IncidentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PatientInformationService.cs" />
+    <Compile Include="QAIssueService.cs" />
+    <Compile Include="VitalsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AmbulancePCR.Data\AmbulancePCR.Data.csproj">

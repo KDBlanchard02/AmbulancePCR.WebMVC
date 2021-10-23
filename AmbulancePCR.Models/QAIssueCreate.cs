@@ -11,8 +11,6 @@ namespace AmbulancePCR.Models
 {
     public class QAIssueCreate
     {
-        [Key]
-        public int IssueID { get; set; }
         [ForeignKey("Incident")]
         public int IncidentNumber { get; set; }
         public Incident Incident { get; set; }
@@ -24,5 +22,6 @@ namespace AmbulancePCR.Models
         public string PtLastName { get; set; }
         public PatientInformation PatientInformation { get; set; }
         public bool IsResolved { get; set; }
+        public DateTimeOffset DateCreated { get; set; }
     }
 }
