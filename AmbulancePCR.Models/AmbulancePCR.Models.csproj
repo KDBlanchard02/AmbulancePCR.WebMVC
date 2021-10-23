@@ -43,11 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IncidentDetail.cs" />
     <Compile Include="IncidentEdit.cs" />
     <Compile Include="IncidentCreate.cs" />
     <Compile Include="IncidentListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PtInformationEdit.cs" />
     <Compile Include="PtInformationCreate.cs" />
+    <Compile Include="PtInformationListItem.cs" />
     <Compile Include="QAIssueCreate.cs" />
     <Compile Include="VitalsCreate.cs" />
   </ItemGroup>

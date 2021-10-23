@@ -46,6 +46,49 @@ namespace AmbulancePCR.Services
             }
         }
 
-        
+        public bool UpdatePtInformation(PtInformationEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .PatientInformation
+                        .Single(e => e.IncidentNumber == model.IncidentNumber);
+
+                entity.IncidentNumber = model.Incident.IncidentNumber;
+                entity.PtFirstName = model.PtFirstName;
+                entity.PtLastName = model.PtLastName;
+                entity.PtAge = model.PtAge;
+                entity.PtDateOfBirth = model.PtDateOfBirth;
+                entity.PtGender = model.PtGender;
+                entity.PtWeight = model.PtWeight;
+                entity.PatientAddress = model.PatientAddress;
+                entity.PtPhoneNumber = model.PtPhoneNumber;
+                entity.PtSSN = model.PtSSN;
+                entity.PtHistory = model.PtHistory;
+                entity.PtAllergiesMeds = model.PtAllergiesMeds;
+                entity.PtAllergiesOther = model.PtAllergiesOther;
+                entity.PtAdvanceDirectives = model.PtAdvanceDirectives;
+                entity.PtMedications = model.PtMedications;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeletePtInformation(int incidentNumber)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .PatientInformation
+                        .Single(e => e.IncidentNumber == incidentNumber);
+
+
+                ctx.PatientInformation.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

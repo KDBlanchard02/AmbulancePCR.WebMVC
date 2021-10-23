@@ -81,6 +81,45 @@ namespace AmbulancePCR.Services
             }
         }
 
+        public IncidentDetail GetIncidentbyNumber(int incidentNumber)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Incidents
+                        .Single(e => e.IncidentNumber == incidentNumber && e.AuthorID == _userId);
+
+                return
+                    new IncidentDetail
+                    {
+                        IncidentNumber = entity.IncidentNumber,
+                        Disposition = entity.Disposition,
+                        SceneAddress = entity.SceneAddress,
+                        CmsLevel = entity.CmsLevel,
+                        VehicleNumber = entity.VehicleNumber,
+                        IncidentDate = entity.IncidentDate,
+
+                        LoadMileage = entity.LoadMileage,
+                        PrimaryCareProvider = entity.PrimaryCareProvider,
+                        AmbulanceDriver = entity.AmbulanceDriver,
+
+                        PCRNarrative = entity.PCRNarrative,
+                        ReportingCrewMember = entity.PrimaryCareProvider,
+
+                        DestinationAddress = entity.DestinationAddress,
+                        Reason = entity.Reason,
+                        Type = entity.Type,
+                        PtPosition = entity.PtPosition,
+
+                        PrimarySymptom = entity.PrimarySymptom,
+                        PrimaryImpression = entity.PrimaryImpression,
+                        SecondaryImpression = entity.SecondaryImpression,
+                        AlcDrugUse = entity.AlcDrugUse
+                    };
+            }
+        }
+
         public bool UpdateIncident(IncidentEdit model)
         {
             using (var ctx = new ApplicationDbContext())
