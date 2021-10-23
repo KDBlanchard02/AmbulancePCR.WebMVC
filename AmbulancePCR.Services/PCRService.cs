@@ -17,10 +17,10 @@ namespace AmbulancePCR.Services
             _userId = userId;
         }
 
-        public bool CreatePCR(PCRCreate model)
+        public bool CreateIncident(IncidentCreate model)
         {
             var entity =
-                new PatientCareReport()
+                new Incident()
                 {
                     AuthorID = _userId,
                     IncidentNumber = model.IncidentNumber,
@@ -29,56 +29,19 @@ namespace AmbulancePCR.Services
                     CmsLevel = model.CmsLevel,
                     VehicleNumber = model.VehicleNumber,
                     IncidentDate = model.IncidentDate,
-                    UnitNotified = model.UnitNotified,
-                    EnRoute = model.EnRoute,
-                    OnScene = model.OnScene,
-                    Transporting = model.Transporting,
-                    Destination = model.Destination,
-                    InService = model.InService,
-                    LoadMileage = model.LoadMileage,
-                    //PrimaryCareProvider = model.PrimaryCareProvider,
-                    //AmbulanceDriver = model.AmbulanceDriver,
+                    
 
-                    PtFirstName = model.PtFirstName,
-                    PtLastName = model.PtLastName,
-                    PtAge = model.PtAge,
-                    PtDateOfBirth = model.PtDateOfBirth,
-                    PtGender = model.PtGender,
-                    PtWeight = model.PtWeight,
-                    PatientAddress = model.PatientAddress,
-                    PtPhoneNumber = model.PtPhoneNumber,
-                    PtSSN = model.PtSSN,
-                    PtHistory = model.PtHistory,
-                    PtAdvanceDirectives = model.PtAdvanceDirectives,
-                    PtAllergiesMeds = model.PtAllergiesMeds,
-                    PtAllergiesOther = model.PtAllergiesOther,
-                    PtMedications = model.PtMedications,
+                    LoadMileage = model.LoadMileage,
+                    PrimaryCareProvider = model.PrimaryCareProvider,
+                    AmbulanceDriver = model.AmbulanceDriver,
 
                     PCRNarrative = model.PCRNarrative,
-                    //ReportingCrewMember = model.PrimaryCareProvider,
+                    ReportingCrewMember = model.PrimaryCareProvider,
 
                     DestinationAddress = model.DestinationAddress,
                     Reason = model.Reason,
                     Type = model.Type,
                     PtPosition = model.PtPosition,
-
-                    SystolicBloodPressure = model.SystolicBloodPressure,
-                    DiastolicBloodPressure = model.DiastolicBloodPressure,
-                    MeanPressure = ((model.SystolicBloodPressure + model.DiastolicBloodPressure)/2),
-                    HeartRate = model.HeartRate,
-                    RespiratoryRate = model.RespiratoryRate,
-                    RespEffort = model.RespEffort,
-                    Rhythm = model.Rhythm, 
-                    BPMethod = model.BPMethod,
-                    HRType = model.HRType,
-                    Oximetry = model.Oximetry,
-                    GCSVerbal = model.GCSVerbal,
-                    GCSMotor = model.GCSMotor,
-                    GCSEyes = model.GCSEyes,
-                    GCSTotal = (model.GCSEyes + model.GCSMotor + model.GCSVerbal),
-                    BloodGlucose = model.BloodGlucose,
-                    Temperature = model.Temperature,
-                    VitalSignsTime = model.VitalSignsTime,
 
                     PrimarySymptom = model.PrimarySymptom,
                     PrimaryImpression = model.PrimaryImpression,
@@ -88,28 +51,30 @@ namespace AmbulancePCR.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.PtCareReports.Add(entity);
+                ctx.Incidents.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<PCRListItem> GetPCRs()
+        public IEnumerable<IncidentListItem> GetIncidents()
         {
             using (var ctx = new ApplicationDbContext())
             {
+                PatientInformation patientInformation = new PatientInformation();
+
                 var query =
                     ctx
-                    .PtCareReports
+                    .Incidents
                     .Where(e => e.AuthorID == _userId)
                     .Select(
                         e =>
-                        new PCRListItem
+                        new IncidentListItem
                         {
                             IncidentNumber = e.IncidentNumber,
                             AuthorID = e.AuthorID,
                             IncidentDate = e.IncidentDate,
-                            PtLastName = e.PtLastName,
-                            //PrimaryCareProvider = e.PrimaryCareProvider
+                            PtLastName = patientInformation.PtLastName,
+                            PrimaryCareProvider = e.PrimaryCareProvider
                         }
                         );
                 return query.ToArray();

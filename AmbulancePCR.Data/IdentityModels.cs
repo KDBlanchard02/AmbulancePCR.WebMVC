@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -18,6 +19,17 @@ namespace AmbulancePCR.Data
             // Add custom user claims here
             return userIdentity;
         }
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Key]
+        [Required]
+        public int PSID { get; set; }
+        [Required]
+        public string Certification { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -32,7 +44,10 @@ namespace AmbulancePCR.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<PatientCareReport> PtCareReports { get; set; }
+        public DbSet<Incident> Incidents { get; set; }
+        public DbSet<QAIssue> Issues { get; set; }
+        public DbSet<PatientInformation> PatientInformation { get; set; }
+        public DbSet<Vitals> Vitals { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
