@@ -80,5 +80,64 @@ namespace AmbulancePCR.Services
                 return query.ToArray();
             }
         }
+
+        public bool UpdateIncident(IncidentEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Incidents
+                        .Single(e => e.IncidentNumber == model.IncidentNumber);
+
+                entity.Disposition = model.Disposition;
+                entity.SceneAddress = model.SceneAddress;
+                entity.CmsLevel = model.CmsLevel;
+                entity.VehicleNumber = model.VehicleNumber;
+                entity.IncidentDate = model.IncidentDate;
+                entity.PrimaryCareProvider = model.PrimaryCareProvider;
+                entity.AmbulanceDriver = model.AmbulanceDriver;
+                entity.LoadMileage = model.LoadMileage;
+                entity.DestinationAddress = model.DestinationAddress;
+                entity.Reason = model.Reason;
+                entity.Type = model.Type;
+                entity.PtPosition = model.PtPosition;
+                entity.PrimarySymptom = model.PrimarySymptom;
+                entity.PrimaryImpression = model.PrimaryImpression;
+                entity.SecondaryImpression = model.SecondaryImpression;
+                entity.AlcDrugUse = model.AlcDrugUse;
+                entity.PCRNarrative = model.PCRNarrative;
+                entity.ReportingCrewMember = model.PrimaryCareProvider;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteIncident(int incidentNumber)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Incidents
+                        .Single(e => e.IncidentNumber == incidentNumber && e.AuthorID == _userId);
+                
+                var vitals =
+                    ctx
+                    .Vitals
+                    .Where(v => v.IncidentNumber == incidentNumber);
+
+                var pt =
+                    ctx
+                    .PatientInformation
+                    .Where(p => p.IncidentNumber == incidentNumber);
+
+                ctx.Incidents.Remove(entity);
+                ctx.Vitals.Remove((Vitals)vitals);
+                ctx.PatientInformation.Remove((PatientInformation)pt);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
