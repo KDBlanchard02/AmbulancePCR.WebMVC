@@ -1,0 +1,448 @@
+﻿@model AmbulancePCR.Data.PCRDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PCRDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncidentNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disposition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disposition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SceneAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SceneAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CmsLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CmsLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncidentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncidentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitNotified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitNotified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnRoute)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnRoute)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnScene)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnScene)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transporting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transporting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoadMileage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoadMileage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DestinationAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DestinationAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimarySymptom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimarySymptom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryImpression)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryImpression)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryImpression)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryImpression)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlcDrugUse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlcDrugUse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCRNarrative)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCRNarrative)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtDateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtDateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtSSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtSSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtHistory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtAdvanceDirectives)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtAdvanceDirectives)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtAllergiesMeds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtAllergiesMeds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtAllergiesOther)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtAllergiesOther)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PtMedications)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PtMedications)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SystolicBloodPressure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SystolicBloodPressure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiastolicBloodPressure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiastolicBloodPressure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeanPressure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeanPressure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeartRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeartRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RespiratoryRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RespiratoryRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RespEffort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RespEffort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rhythm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rhythm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BPMethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BPMethod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HRType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HRType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oximetry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oximetry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GCSVerbal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GCSVerbal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GCSMotor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GCSMotor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GCSEyes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GCSEyes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GCSTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GCSTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BloodGlucose)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BloodGlucose)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Temperature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Temperature)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VitalSignsTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VitalSignsTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

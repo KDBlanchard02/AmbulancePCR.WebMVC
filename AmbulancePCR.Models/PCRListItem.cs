@@ -1,6 +1,7 @@
 ﻿using AmbulancePCR.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace AmbulancePCR.Models
 {
-    public class IncidentListItem
+    public class PCRListItem
     {
-        [ForeignKey("Incident")]
         public int IncidentNumber { get; set; }
         public Guid AuthorID { get; set; }
         public DateTimeOffset IncidentDate { get; set; }

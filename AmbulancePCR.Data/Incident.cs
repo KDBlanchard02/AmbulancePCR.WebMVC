@@ -31,9 +31,9 @@ namespace AmbulancePCR.Data
         [Display(Name = "Incident Date")]
         public DateTimeOffset IncidentDate { get; set; }
 
-        public ICollection<IncidentStatus> Statuses { get; set; }
+        //public ICollection<IncidentStatus> Statuses { get; set; }
 
-        /*[Required]
+        [Required]
         [Display(Name = "Unit Notified")]
         public DateTimeOffset UnitNotified { get; set; }
         [Required]
@@ -48,9 +48,9 @@ namespace AmbulancePCR.Data
         public DateTimeOffset Destination { get; set; }
         [Required]
         [Display(Name = "In Service")]
-        public DateTimeOffset InService { get; set; }*/
+        public DateTimeOffset InService { get; set; }
 
-        public enum IncidentStatus 
+        /*public enum IncidentStatus 
         {
             UnitNotfied = 1,
             EnRoute = 2,
@@ -58,7 +58,7 @@ namespace AmbulancePCR.Data
             Transporting = 4,
             Destination = 5,
             InService = 6
-        }
+        }*/
 
         [Required]
         public ApplicationUser PrimaryCareProvider { get; set; }
