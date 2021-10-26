@@ -12,7 +12,6 @@ namespace AmbulancePCR.WebMVC.Controllers
 {
     public class PCRController : Controller
     {
-        private ApplicationDbContext _db = new ApplicationDbContext();
         // GET: PCR
         public ActionResult Index()
         {
