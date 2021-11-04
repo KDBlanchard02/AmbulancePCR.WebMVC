@@ -9,9 +9,8 @@ namespace AmbulancePCR.Models
 {
     public class PCRListItem
     {
-        public Guid AuthorID { get; set; }
         public string PtLastName { get; set; }
-        public ApplicationUser PrimaryCareProvider { get; set; }
+        public string PrimaryCareProvider { get; set; }
         public DateTimeOffset IncidentDate { get; set; }
         public int IncidentNumber { get; set; }
     }

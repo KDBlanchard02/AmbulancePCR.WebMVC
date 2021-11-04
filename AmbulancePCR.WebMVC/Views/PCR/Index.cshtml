@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AmbulancePCR.Models.PCRListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PtLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryCareProvider)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncidentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IncidentNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PtLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryCareProvider)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

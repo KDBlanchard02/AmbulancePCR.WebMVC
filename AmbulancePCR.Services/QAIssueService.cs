@@ -21,8 +21,7 @@ namespace AmbulancePCR.Services
         {
             var ctx = new ApplicationDbContext();
 
-            var incidentNum = from c in ctx.Incidents select c.IncidentNumber;
-            var pt = (from x in ctx.PatientInformation where x.IncidentNumber.Equals(incidentNum) select x.PtLastName).ToString();
+           
 
             var entity =
                 new QAIssue()
@@ -30,7 +29,7 @@ namespace AmbulancePCR.Services
                     IncidentNumber = model.IncidentNumber,
                     DateCreated = DateTimeOffset.Now,
                     Note = model.Note,
-                    PtLastName = pt,
+                    //PtLastName = pt,
                     PrimaryCareProvider = model.Incident.PrimaryCareProvider
                 };
 

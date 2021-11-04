@@ -58,6 +58,15 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Medication.cs" />
     <Compile Include="Incident.cs" />
+    <Compile Include="Migrations\202110270009219_InitialCreate.cs" />
+    <Compile Include="Migrations\202110270009219_InitialCreate.Designer.cs">
+      <DependentUpon>202110270009219_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111042145070_savedchanges.cs" />
+    <Compile Include="Migrations\202111042145070_savedchanges.Designer.cs">
+      <DependentUpon>202111042145070_savedchanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatientInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QAIssue.cs" />
@@ -66,6 +75,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202110270009219_InitialCreate.resx">
+      <DependentUpon>202110270009219_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111042145070_savedchanges.resx">
+      <DependentUpon>202111042145070_savedchanges.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

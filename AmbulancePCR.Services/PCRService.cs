@@ -109,8 +109,6 @@ namespace AmbulancePCR.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var incidentNum = from c in ctx.Incidents select c.IncidentNumber;
-                var pt = (from x in ctx.PatientInformation where x.IncidentNumber.Equals(incidentNum) select x.PtLastName).ToString();
 
                 var query =
                     ctx
@@ -121,9 +119,8 @@ namespace AmbulancePCR.Services
                         new PCRListItem
                         {
                             IncidentNumber = e.IncidentNumber,
-                            AuthorID = e.AuthorID,
                             IncidentDate = e.IncidentDate,
-                            PtLastName = pt,
+                            //PtLastName where Incident# in Incident = Incident# in PatientInformation,
                             PrimaryCareProvider = e.PrimaryCareProvider
                         }
                         );

@@ -10,9 +10,12 @@ namespace AmbulancePCR.Data
 {
     public class PatientInformation
     {
+        [Key]
+        [Display(Name = "Patient ID")]
+        public int PatientID { get; set; }
+
         [Required]
         [ForeignKey("Incident")]
-        [Key]
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
         public Incident Incident { get; set; }

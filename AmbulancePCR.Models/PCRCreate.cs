@@ -32,8 +32,6 @@ namespace AmbulancePCR.Models
         [Display(Name = "Incident Date")]
         public DateTimeOffset IncidentDate { get; set; }
 
-        //public ICollection<IncidentStatus> Statuses { get; set; }
-
         [Required]
         [Display(Name = "Unit Notified")]
         public DateTimeOffset UnitNotified { get; set; }
@@ -51,20 +49,11 @@ namespace AmbulancePCR.Models
         [Display(Name = "In Service")]
         public DateTimeOffset InService { get; set; }
 
-        /*public enum IncidentStatus
-        {
-            UnitNotfied = 1,
-            EnRoute = 2,
-            OnScene = 3,
-            Transporting = 4,
-            Destination = 5,
-            InService = 6
-        }*/
 
         [Required]
-        public ApplicationUser PrimaryCareProvider { get; set; }
+        public string PrimaryCareProvider { get; set; }
         [Required]
-        public ApplicationUser AmbulanceDriver { get; set; }
+        public string AmbulanceDriver { get; set; }
 
 
         [Required]
@@ -104,7 +93,7 @@ namespace AmbulancePCR.Models
         public string PCRNarrative { get; set; }
         [Required]
         [Display(Name = "Reporting Crew Member")]
-        public ApplicationUser ReportingCrewMember { get; set; }
+        public string ReportingCrewMember { get; set; }
 
         [Required]
         [Display(Name = "Patient First Name")]
@@ -149,9 +138,7 @@ namespace AmbulancePCR.Models
         [Display(Name = "Diastolic Blood Pressure")]
         public int DiastolicBloodPressure { get; set; }
         [Display(Name = "Mean Pressure")]
-        public int MeanPressure { get; set; }
-        [Required]
-        [Display(Name = "Heart Rate")]
+
         public int HeartRate { get; set; }
         [Required]
         [Display(Name = "Respiratory Rate")]
@@ -175,8 +162,6 @@ namespace AmbulancePCR.Models
         [Display(Name = "GCS (Eyes)")]
         public int GCSEyes { get; set; }
         [Display(Name = "GCS (Total)")]
-        public int GCSTotal { get; set; }
-        [Display(Name = "Blood Glucose")]
         public int BloodGlucose { get; set; }
         [Display(Name = "Temperature (°F)")]
         public double Temperature { get; set; }

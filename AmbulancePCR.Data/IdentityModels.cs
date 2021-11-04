@@ -19,17 +19,6 @@ namespace AmbulancePCR.Data
             // Add custom user claims here
             return userIdentity;
         }
-        [Required]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Required]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-        [Key]
-        [Required]
-        public int PSID { get; set; }
-        [Required]
-        public string Certification { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
