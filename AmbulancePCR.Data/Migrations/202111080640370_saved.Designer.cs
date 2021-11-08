@@ -7,13 +7,13 @@ namespace AmbulancePCR.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class savedchanges : IMigrationMetadata
+    public sealed partial class saved : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(savedchanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(saved));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111042145070_savedchanges"; }
+            get { return "202111080640370_saved"; }
         }
         
         string IMigrationMetadata.Source

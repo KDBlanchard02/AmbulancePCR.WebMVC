@@ -9,6 +9,10 @@ namespace AmbulancePCR.Data
 {
     public class PCRDetail
     {
+        [Display(Name = "Date Created")]
+        public DateTimeOffset DateCreated { get; set; }
+        [Display(Name = "Date Modified")]
+        public DateTimeOffset DateModified { get; set; }
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
         [Display(Name = "Disposition/Outcome")]
@@ -88,9 +92,9 @@ namespace AmbulancePCR.Data
         [Display(Name = "Patient Address")]
         public string PatientAddress { get; set; }
         [Display(Name = "Patient Phone #")]
-        public int PtPhoneNumber { get; set; }
+        public string PtPhoneNumber { get; set; }
         [Display(Name = "Patient SSN")]
-        public int PtSSN { get; set; }
+        public string PtSSN { get; set; }
         [Display(Name = "Patient Medical History")]
         public string PtHistory { get; set; }
         [Display(Name = "Patient Advance Directives")]

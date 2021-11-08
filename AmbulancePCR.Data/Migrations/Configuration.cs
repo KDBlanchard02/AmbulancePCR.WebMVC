@@ -10,7 +10,6 @@ namespace AmbulancePCR.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "AmbulancePCR.Data.ApplicationDbContext";
         }
 
         protected override void Seed(AmbulancePCR.Data.ApplicationDbContext context)

@@ -56,7 +56,7 @@ namespace AmbulancePCR.WebMVC.Controllers
         public ActionResult Details(int id)
         {
             var svc = CreatePCRService();
-            var model = svc.GetPCRByIncidentNumber(id);
+            var model = svc.GetPCRById(id);
 
             return View(model);
         }
@@ -64,7 +64,7 @@ namespace AmbulancePCR.WebMVC.Controllers
         public ActionResult Edit(int id)
         {
             var service = CreatePCRService();
-            var detail = service.GetPCRByIncidentNumber(id);
+            var detail = service.GetPCRById(id);
             var model =
                 new PCREdit
                 {
@@ -161,7 +161,7 @@ namespace AmbulancePCR.WebMVC.Controllers
         public ActionResult Delete(int id)
         {
             var svc = CreatePCRService();
-            var model = svc.GetPCRByIncidentNumber(id);
+            var model = svc.GetPCRById(id);
 
             return View(model);
         }

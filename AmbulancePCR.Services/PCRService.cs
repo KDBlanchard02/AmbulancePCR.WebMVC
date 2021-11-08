@@ -22,6 +22,7 @@ namespace AmbulancePCR.Services
             var entity =
                 new Incident()
                 {
+                    DateCreated = DateTime.Now,
                     AuthorID = _userId,
                     IncidentNumber = model.IncidentNumber,
                     Disposition = model.Disposition,
@@ -109,7 +110,6 @@ namespace AmbulancePCR.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-
                 var query =
                     ctx
                     .Incidents
@@ -128,24 +128,24 @@ namespace AmbulancePCR.Services
             }
         }
 
-        public PCRDetail GetPCRByIncidentNumber(int incidentNumber)
+        public PCRDetail GetPCRById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Incidents
-                        .Single(e => e.IncidentNumber == incidentNumber && e.AuthorID == _userId);
+                        .Single(e => e.Id == id && e.AuthorID == _userId);
 
                 var ptinfo =
                     ctx
                         .PatientInformation
-                        .Single(p => p.IncidentNumber == incidentNumber);
+                        .Single(p => p.IncidentNumber == entity.IncidentNumber);
 
                 var vitals =
                     ctx
                         .Vitals
-                        .Single(v => v.IncidentNumber == incidentNumber);
+                        .Single(v => v.IncidentNumber == entity.IncidentNumber);
 
                 return
                     new PCRDetail
@@ -224,7 +224,7 @@ namespace AmbulancePCR.Services
                 var entity =
                     ctx
                         .Incidents
-                        .Single(e => e.IncidentNumber == model.IncidentNumber);
+                        .Single(e => e.IncidentNumber == model.IncidentNumber && e.AuthorID == _userId);
 
                 var ptinfo =
                     ctx
@@ -236,6 +236,8 @@ namespace AmbulancePCR.Services
                         .Vitals
                         .Single(v => v.IncidentNumber == model.IncidentNumber);
 
+                entity.DateModified = DateTime.Now;
+                entity.IncidentNumber = model.IncidentNumber;
                 entity.Disposition = model.Disposition;
                 entity.SceneAddress = model.SceneAddress;
                 entity.CmsLevel = model.CmsLevel;
@@ -296,28 +298,28 @@ namespace AmbulancePCR.Services
             }
         }
 
-        public bool DeleteIncident(int incidentNumber)
+        public bool DeleteIncident(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Incidents
-                        .Single(e => e.IncidentNumber == incidentNumber && e.AuthorID == _userId);
+                        .Single(e => e.Id == id && e.AuthorID == _userId);
                 
                 var vitals =
                     ctx
                     .Vitals
-                    .Where(v => v.IncidentNumber == incidentNumber);
+                    .Single(v => v.IncidentNumber == entity.IncidentNumber);
 
                 var pt =
                     ctx
                     .PatientInformation
-                    .Where(p => p.IncidentNumber == incidentNumber);
+                    .Single(p => p.IncidentNumber == entity.IncidentNumber);
 
                 ctx.Incidents.Remove(entity);
-                ctx.Vitals.Remove((Vitals)vitals);
-                ctx.PatientInformation.Remove((PatientInformation)pt);
+                ctx.Vitals.Remove(vitals);
+                ctx.PatientInformation.Remove(pt);
 
                 return ctx.SaveChanges() == 1;
             }

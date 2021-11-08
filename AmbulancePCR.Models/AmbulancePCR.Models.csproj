@@ -49,6 +49,9 @@
     <Compile Include="PCRListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QAIssueCreate.cs" />
+    <Compile Include="QAIssueDetail.cs" />
+    <Compile Include="QAIssueEdit.cs" />
+    <Compile Include="QAIssueListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AmbulancePCR.Data\AmbulancePCR.Data.csproj">

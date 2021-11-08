@@ -114,9 +114,9 @@ namespace AmbulancePCR.Models
         [Display(Name = "Patient Address")]
         public string PatientAddress { get; set; }
         [Display(Name = "Patient Phone #")]
-        public int PtPhoneNumber { get; set; }
+        public string PtPhoneNumber { get; set; }
         [Display(Name = "Patient SSN")]
-        public int PtSSN { get; set; }
+        public string PtSSN { get; set; }
         [Required]
         [Display(Name = "Patient Medical History")]
         public string PtHistory { get; set; }

@@ -10,9 +10,14 @@ namespace AmbulancePCR.Data
 {
     public class Incident
     {
-        public Guid AuthorID { get; set; }
-        [Required]
         [Key]
+        public int Id { get; set; }
+        public Guid AuthorID { get; set; }
+        [Display(Name = "Date Created")]
+        public DateTimeOffset DateCreated { get; set; }
+        [Display(Name = "Date Modified")]
+        public DateTimeOffset DateModified { get; set; }
+        [Required]
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
         [Required]

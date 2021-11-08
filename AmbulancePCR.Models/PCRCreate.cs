@@ -11,9 +11,7 @@ namespace AmbulancePCR.Models
 {
     public class PCRCreate
     {
-        public Guid AuthorID { get; set; }
         [Required]
-        [Key]
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
         [Required]
@@ -116,9 +114,9 @@ namespace AmbulancePCR.Models
         [Display(Name = "Patient Address")]
         public string PatientAddress { get; set; }
         [Display(Name = "Patient Phone #")]
-        public int PtPhoneNumber { get; set; }
+        public string PtPhoneNumber { get; set; }
         [Display(Name = "Patient SSN")]
-        public int PtSSN { get; set; }
+        public string PtSSN { get; set; }
         [Required]
         [Display(Name = "Patient Medical History")]
         public string PtHistory { get; set; }
@@ -137,8 +135,7 @@ namespace AmbulancePCR.Models
         [Required]
         [Display(Name = "Diastolic Blood Pressure")]
         public int DiastolicBloodPressure { get; set; }
-        [Display(Name = "Mean Pressure")]
-
+        [Display(Name = "Heart Rate")]
         public int HeartRate { get; set; }
         [Required]
         [Display(Name = "Respiratory Rate")]
@@ -161,7 +158,7 @@ namespace AmbulancePCR.Models
         [Required]
         [Display(Name = "GCS (Eyes)")]
         public int GCSEyes { get; set; }
-        [Display(Name = "GCS (Total)")]
+        [Display(Name = "Blood Glucose")]
         public int BloodGlucose { get; set; }
         [Display(Name = "Temperature (°F)")]
         public double Temperature { get; set; }
