@@ -15,7 +15,7 @@ namespace AmbulancePCR.WebMVC.Controllers
         // GET: PCR
         public ActionResult Index()
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
+            Guid userID = Guid.Parse(User.Identity.GetUserId());
             var service = new PCRService(userID);
             var model = service.GetPCRs();
 
