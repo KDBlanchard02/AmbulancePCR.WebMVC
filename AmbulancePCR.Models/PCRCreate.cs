@@ -28,24 +28,25 @@ namespace AmbulancePCR.Models
         public int VehicleNumber { get; set; }
         [Required]
         [Display(Name = "Incident Date")]
-        public DateTimeOffset IncidentDate { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? IncidentDate { get; set; }
 
         [Required]
         [Display(Name = "Unit Notified")]
-        public DateTimeOffset UnitNotified { get; set; }
+        public TimeSpan UnitNotified { get; set; }
         [Required]
         [Display(Name = "En Route")]
-        public DateTimeOffset EnRoute { get; set; }
+        public TimeSpan EnRoute { get; set; }
         [Required]
         [Display(Name = "On Scene")]
-        public DateTimeOffset OnScene { get; set; }
+        public TimeSpan OnScene { get; set; }
         [Required]
-        public DateTimeOffset Transporting { get; set; }
+        public TimeSpan Transporting { get; set; }
         [Required]
-        public DateTimeOffset Destination { get; set; }
+        public TimeSpan Destination { get; set; }
         [Required]
         [Display(Name = "In Service")]
-        public DateTimeOffset InService { get; set; }
+        public TimeSpan InService { get; set; }
 
 
         [Required]
@@ -104,7 +105,8 @@ namespace AmbulancePCR.Models
         public int PtAge { get; set; }
         [Required]
         [Display(Name = "Patient Date Of Birth")]
-        public DateTime PtDateOfBirth { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? PtDateOfBirth { get; set; }
         [Required]
         [Display(Name = "Patient Gender")]
         public string PtGender { get; set; }
@@ -164,6 +166,6 @@ namespace AmbulancePCR.Models
         public double Temperature { get; set; }
         [Required]
         [Display(Name = "Vital Signs (Time)")]
-        public DateTimeOffset VitalSignsTime { get; set; }
+        public TimeSpan VitalSignsTime { get; set; }
     }
 }

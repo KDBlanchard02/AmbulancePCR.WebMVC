@@ -11,7 +11,7 @@ namespace AmbulancePCR.Data
     public class Vitals
     {
         [Key]
-        public int Id { get; set; }
+        public int VitalsId { get; set; }
 
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
@@ -34,6 +34,7 @@ namespace AmbulancePCR.Data
         [Display(Name = "Heart Rate")]
         public int HeartRate { get; set; }
         [Required]
+        [Range(1, 80)]
         [Display(Name = "Respiratory Rate")]
         public int RespiratoryRate { get; set; }
         [Display(Name = "Resp Effort")]
@@ -44,15 +45,19 @@ namespace AmbulancePCR.Data
         [Display(Name = "HR Type")]
         public string HRType { get; set; }
         [Display(Name = "Oximetry (%)")]
+        [Range(1, 100)]
         public int Oximetry { get; set; }
         [Required]
         [Display(Name = "GCS (Verbal)")]
+        [Range(1, 5)]
         public int GCSVerbal { get; set; }
         [Required]
         [Display(Name = "GCS (Motor)")]
+        [Range(1, 6)]
         public int GCSMotor { get; set; }
         [Required]
         [Display(Name = "GCS (Eyes)")]
+        [Range(1, 4)]
         public int GCSEyes { get; set; }
         [Display(Name = "GCS (Total)")]
         public int GCSTotal 
@@ -69,6 +74,6 @@ namespace AmbulancePCR.Data
         public double Temperature { get; set; }
         [Required]
         [Display(Name = "Vital Signs (Time)")]
-        public DateTimeOffset VitalSignsTime { get; set; }
+        public TimeSpan VitalSignsTime { get; set; }
     }
 }

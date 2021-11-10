@@ -10,12 +10,14 @@ using System.Web.Mvc;
 
 namespace AmbulancePCR.WebMVC.Controllers
 {
+    [Authorize]
     public class PCRController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
         // GET: PCR
         public ActionResult Index()
         {
-            Guid userID = Guid.Parse(User.Identity.GetUserId());
+            var userID = Guid.Parse(User.Identity.GetUserId());
             var service = new PCRService(userID);
             var model = service.GetPCRs();
 
@@ -38,19 +40,27 @@ namespace AmbulancePCR.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PCRCreate model)
         {
-            if (!ModelState.IsValid) return View(model);
-
-            var service = CreatePCRService();
-
-            if (service.CreatePCR(model))
+            try
             {
-                TempData["SaveResult"] = "Your PCR was created.";
-                return RedirectToAction("Index");
+                if (!ModelState.IsValid) { return View(model); }
+
+                var service = CreatePCRService();
+
+                if (service.CreatePCR(model))
+                {
+                    TempData["SaveResult"] = "Your PCR was created.";
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("", "PCR could not be created.");
+
+                return View(model);
             }
-
-            ModelState.AddModelError("", "PCR could not be created.");
-
-            return View(model);
+            catch
+            {
+                ModelState.AddModelError("", "Missing required values.");
+                return View(model);
+            }
         }
 
         public ActionResult Details(int id)
@@ -137,24 +147,28 @@ namespace AmbulancePCR.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, PCREdit model)
         {
-            if (!ModelState.IsValid) return View(model);
-
-            if (model.IncidentNumber != id)
+            try
             {
-                ModelState.AddModelError("", "Incident # not found.");
+                if (!ModelState.IsValid) { return View(model); }
+
+                model.PatientCareReportId = id;
+
+                var service = CreatePCRService();
+
+                if (service.UpdatePCR(model))
+                {
+                    TempData["SaveResult"] = "Your PCR was updated.";
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("", "Your PCR could not be updated.");
                 return View(model);
             }
-
-            var service = CreatePCRService();
-
-            if (service.UpdatePCR(model))
+            catch
             {
-                TempData["SaveResult"] = "Your PCR was updated.";
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Missing required values.");
+                return View(model);
             }
-
-            ModelState.AddModelError("", "Your PCR could not be updated.");
-            return View(model);
         }
 
         [ActionName("Delete")]

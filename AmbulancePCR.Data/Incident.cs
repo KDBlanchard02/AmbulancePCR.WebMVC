@@ -11,7 +11,8 @@ namespace AmbulancePCR.Data
     public class Incident
     {
         [Key]
-        public int Id { get; set; }
+        public int PatientCareReportId { get; set; }
+        [Required]
         public Guid AuthorID { get; set; }
         [Display(Name = "Date Created")]
         public DateTimeOffset DateCreated { get; set; }
@@ -34,25 +35,26 @@ namespace AmbulancePCR.Data
         public int VehicleNumber { get; set; }
         [Required]
         [Display(Name = "Incident Date")]
-        public DateTimeOffset IncidentDate { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? IncidentDate { get; set; }
 
 
         [Required]
         [Display(Name = "Unit Notified")]
-        public DateTimeOffset UnitNotified { get; set; }
+        public TimeSpan UnitNotified { get; set; }
         [Required]
         [Display(Name = "En Route")]
-        public DateTimeOffset EnRoute { get; set; }
+        public TimeSpan EnRoute { get; set; }
         [Required]
         [Display(Name = "On Scene")]
-        public DateTimeOffset OnScene { get; set; }
+        public TimeSpan OnScene { get; set; }
         [Required]
-        public DateTimeOffset Transporting { get; set; }
+        public TimeSpan Transporting { get; set; }
         [Required]
-        public DateTimeOffset Destination { get; set; }
+        public TimeSpan Destination { get; set; }
         [Required]
         [Display(Name = "In Service")]
-        public DateTimeOffset InService { get; set; }
+        public TimeSpan InService { get; set; }
 
 
         [Required]

@@ -57,13 +57,21 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Incident.cs" />
-    <Compile Include="Migrations\202111080640370_saved.cs" />
-    <Compile Include="Migrations\202111080640370_saved.Designer.cs">
-      <DependentUpon>202111080640370_saved.cs</DependentUpon>
+    <Compile Include="Migrations\202111100049568_initial.cs" />
+    <Compile Include="Migrations\202111100049568_initial.Designer.cs">
+      <DependentUpon>202111100049568_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111080655393_saved2.cs" />
-    <Compile Include="Migrations\202111080655393_saved2.Designer.cs">
-      <DependentUpon>202111080655393_saved2.cs</DependentUpon>
+    <Compile Include="Migrations\202111100300021_saved.cs" />
+    <Compile Include="Migrations\202111100300021_saved.Designer.cs">
+      <DependentUpon>202111100300021_saved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111100309262_saved2.cs" />
+    <Compile Include="Migrations\202111100309262_saved2.Designer.cs">
+      <DependentUpon>202111100309262_saved2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111100314300_savedThree.cs" />
+    <Compile Include="Migrations\202111100314300_savedThree.Designer.cs">
+      <DependentUpon>202111100314300_savedThree.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatientInformation.cs" />
@@ -76,11 +84,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111080640370_saved.resx">
-      <DependentUpon>202111080640370_saved.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111100049568_initial.resx">
+      <DependentUpon>202111100049568_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111080655393_saved2.resx">
-      <DependentUpon>202111080655393_saved2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111100300021_saved.resx">
+      <DependentUpon>202111100300021_saved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111100309262_saved2.resx">
+      <DependentUpon>202111100309262_saved2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111100314300_savedThree.resx">
+      <DependentUpon>202111100314300_savedThree.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

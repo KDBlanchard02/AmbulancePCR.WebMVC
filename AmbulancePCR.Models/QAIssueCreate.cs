@@ -17,7 +17,7 @@ namespace AmbulancePCR.Models
         [Required]
         public string Note { get; set; }
         [Required]
-        public ApplicationUser PrimaryCareProvider { get; set; }
+        public string PrimaryCareProvider { get; set; }
         [Required]
         public string PtLastName { get; set; }
         public PatientInformation PatientInformation { get; set; }

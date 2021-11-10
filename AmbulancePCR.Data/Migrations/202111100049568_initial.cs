@@ -3,7 +3,7 @@ namespace AmbulancePCR.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class saved : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace AmbulancePCR.Data.Migrations
                 "dbo.Incident",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        PatientCareReportId = c.Int(nullable: false, identity: true),
                         AuthorID = c.Guid(nullable: false),
                         DateCreated = c.DateTimeOffset(nullable: false, precision: 7),
                         DateModified = c.DateTimeOffset(nullable: false, precision: 7),
@@ -41,7 +41,7 @@ namespace AmbulancePCR.Data.Migrations
                         PCRNarrative = c.String(nullable: false),
                         ReportingCrewMember = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.PatientCareReportId);
             
             CreateTable(
                 "dbo.QAIssue",
@@ -54,19 +54,19 @@ namespace AmbulancePCR.Data.Migrations
                         PtLastName = c.String(nullable: false),
                         IsResolved = c.Boolean(nullable: false),
                         DateCreated = c.DateTimeOffset(nullable: false, precision: 7),
-                        PatientInformation_PatientID = c.Int(),
+                        PatientInformation_PatientId = c.Int(),
                     })
                 .PrimaryKey(t => t.IssueID)
                 .ForeignKey("dbo.Incident", t => t.IncidentNumber, cascadeDelete: true)
-                .ForeignKey("dbo.PatientInformation", t => t.PatientInformation_PatientID)
+                .ForeignKey("dbo.PatientInformation", t => t.PatientInformation_PatientId)
                 .Index(t => t.IncidentNumber)
-                .Index(t => t.PatientInformation_PatientID);
+                .Index(t => t.PatientInformation_PatientId);
             
             CreateTable(
                 "dbo.PatientInformation",
                 c => new
                     {
-                        PatientID = c.Int(nullable: false, identity: true),
+                        PatientId = c.Int(nullable: false, identity: true),
                         IncidentNumber = c.Int(nullable: false),
                         PtFirstName = c.String(nullable: false),
                         PtLastName = c.String(nullable: false),
@@ -83,9 +83,7 @@ namespace AmbulancePCR.Data.Migrations
                         PtAllergiesOther = c.String(),
                         PtMedications = c.String(),
                     })
-                .PrimaryKey(t => t.PatientID)
-                .ForeignKey("dbo.Incident", t => t.IncidentNumber, cascadeDelete: true)
-                .Index(t => t.IncidentNumber);
+                .PrimaryKey(t => t.PatientId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -161,7 +159,7 @@ namespace AmbulancePCR.Data.Migrations
                 "dbo.Vitals",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        VitalsId = c.Int(nullable: false, identity: true),
                         IncidentNumber = c.Int(nullable: false),
                         SystolicBloodPressure = c.Int(nullable: false),
                         DiastolicBloodPressure = c.Int(nullable: false),
@@ -179,29 +177,23 @@ namespace AmbulancePCR.Data.Migrations
                         Temperature = c.Double(nullable: false),
                         VitalSignsTime = c.DateTimeOffset(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Incident", t => t.IncidentNumber, cascadeDelete: true)
-                .Index(t => t.IncidentNumber);
+                .PrimaryKey(t => t.VitalsId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Vitals", "IncidentNumber", "dbo.Incident");
             DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
-            DropForeignKey("dbo.QAIssue", "PatientInformation_PatientID", "dbo.PatientInformation");
-            DropForeignKey("dbo.PatientInformation", "IncidentNumber", "dbo.Incident");
+            DropForeignKey("dbo.QAIssue", "PatientInformation_PatientId", "dbo.PatientInformation");
             DropForeignKey("dbo.QAIssue", "IncidentNumber", "dbo.Incident");
-            DropIndex("dbo.Vitals", new[] { "IncidentNumber" });
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.PatientInformation", new[] { "IncidentNumber" });
-            DropIndex("dbo.QAIssue", new[] { "PatientInformation_PatientID" });
+            DropIndex("dbo.QAIssue", new[] { "PatientInformation_PatientId" });
             DropIndex("dbo.QAIssue", new[] { "IncidentNumber" });
             DropTable("dbo.Vitals");
             DropTable("dbo.IdentityUserLogin");

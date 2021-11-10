@@ -9,6 +9,8 @@ namespace AmbulancePCR.Data
 {
     public class PCRDetail
     {
+        [Display(Name = "PCR ID")]
+        public int PatientCareReportId { get; set; }
         [Display(Name = "Date Created")]
         public DateTimeOffset DateCreated { get; set; }
         [Display(Name = "Date Modified")]
@@ -24,24 +26,25 @@ namespace AmbulancePCR.Data
         [Display(Name = "Vehicle #")]
         public int VehicleNumber { get; set; }
         [Display(Name = "Incident Date")]
-        public DateTimeOffset IncidentDate { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? IncidentDate { get; set; }
 
         [Required]
         [Display(Name = "Unit Notified")]
-        public DateTimeOffset UnitNotified { get; set; }
+        public TimeSpan UnitNotified { get; set; }
         [Required]
         [Display(Name = "En Route")]
-        public DateTimeOffset EnRoute { get; set; }
+        public TimeSpan EnRoute { get; set; }
         [Required]
         [Display(Name = "On Scene")]
-        public DateTimeOffset OnScene { get; set; }
+        public TimeSpan OnScene { get; set; }
         [Required]
-        public DateTimeOffset Transporting { get; set; }
+        public TimeSpan Transporting { get; set; }
         [Required]
-        public DateTimeOffset Destination { get; set; }
+        public TimeSpan Destination { get; set; }
         [Required]
         [Display(Name = "In Service")]
-        public DateTimeOffset InService { get; set; }
+        public TimeSpan InService { get; set; }
 
         public string PrimaryCareProvider { get; set; }
         public string AmbulanceDriver { get; set; }
@@ -84,7 +87,8 @@ namespace AmbulancePCR.Data
         [Display(Name = "Patient Age")]
         public int PtAge { get; set; }
         [Display(Name = "Patient Date Of Birth")]
-        public DateTime PtDateOfBirth { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? PtDateOfBirth { get; set; }
         [Display(Name = "Patient Gender")]
         public string PtGender { get; set; }
         [Display(Name = "Patient Weight (kg)")]
@@ -138,6 +142,6 @@ namespace AmbulancePCR.Data
         [Display(Name = "Temperature (°F)")]
         public double Temperature { get; set; }
         [Display(Name = "Vital Signs (Time)")]
-        public DateTimeOffset VitalSignsTime { get; set; }
+        public TimeSpan VitalSignsTime { get; set; }
     }
 }

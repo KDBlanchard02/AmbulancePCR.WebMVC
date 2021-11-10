@@ -102,7 +102,7 @@ namespace AmbulancePCR.Services
                 ctx.Incidents.Add(entity);
                 ctx.PatientInformation.Add(ptinfo);
                 ctx.Vitals.Add(vitals);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 3;
             }
         }
 
@@ -120,7 +120,7 @@ namespace AmbulancePCR.Services
                         {
                             IncidentNumber = e.IncidentNumber,
                             IncidentDate = e.IncidentDate,
-                            //PtLastName where Incident# in Incident = Incident# in PatientInformation,
+                            PatientCareReportId = e.PatientCareReportId,
                             PrimaryCareProvider = e.PrimaryCareProvider
                         }
                         );
@@ -135,21 +135,23 @@ namespace AmbulancePCR.Services
                 var entity =
                     ctx
                         .Incidents
-                        .Single(e => e.Id == id && e.AuthorID == _userId);
+                        .Single(e => e.PatientCareReportId == id && e.AuthorID == _userId);
 
                 var ptinfo =
                     ctx
                         .PatientInformation
-                        .Single(p => p.IncidentNumber == entity.IncidentNumber);
+                        .FirstOrDefault(p => p.IncidentNumber == entity.IncidentNumber);
 
                 var vitals =
                     ctx
                         .Vitals
-                        .Single(v => v.IncidentNumber == entity.IncidentNumber);
+                        .FirstOrDefault(v => v.IncidentNumber == entity.IncidentNumber);
 
                 return
                     new PCRDetail
                     {
+                        DateCreated = entity.DateCreated,
+                        DateModified = entity.DateModified,
                         IncidentNumber = entity.IncidentNumber,
                         Disposition = entity.Disposition,
                         SceneAddress = entity.SceneAddress,
@@ -222,19 +224,17 @@ namespace AmbulancePCR.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
-                    ctx
-                        .Incidents
-                        .Single(e => e.IncidentNumber == model.IncidentNumber && e.AuthorID == _userId);
+                    ctx.Incidents.Single(e => e.PatientCareReportId == model.PatientCareReportId && e.AuthorID == _userId);
 
                 var ptinfo =
                     ctx
                         .PatientInformation
-                        .Single(p => p.IncidentNumber == model.IncidentNumber);
+                        .FirstOrDefault(p => p.IncidentNumber == entity.IncidentNumber);
 
                 var vitals =
                     ctx
                         .Vitals
-                        .Single(v => v.IncidentNumber == model.IncidentNumber);
+                        .FirstOrDefault(v => v.IncidentNumber == entity.IncidentNumber);
 
                 entity.DateModified = DateTime.Now;
                 entity.IncidentNumber = model.IncidentNumber;
@@ -263,6 +263,7 @@ namespace AmbulancePCR.Services
                 entity.PCRNarrative = model.PCRNarrative;
                 entity.ReportingCrewMember = model.PrimaryCareProvider;
 
+                ptinfo.IncidentNumber = model.IncidentNumber;
                 ptinfo.PtFirstName = model.PtFirstName;
                 ptinfo.PtLastName = model.PtLastName;
                 ptinfo.PtAge = model.PtAge;
@@ -278,6 +279,7 @@ namespace AmbulancePCR.Services
                 ptinfo.PtAdvanceDirectives = model.PtAdvanceDirectives;
                 ptinfo.PtMedications = model.PtMedications;
 
+                vitals.IncidentNumber = model.IncidentNumber;
                 vitals.SystolicBloodPressure = model.SystolicBloodPressure;
                 vitals.DiastolicBloodPressure = model.DiastolicBloodPressure;
                 vitals.HeartRate = model.HeartRate;
@@ -294,7 +296,7 @@ namespace AmbulancePCR.Services
                 vitals.Temperature = model.Temperature;
                 vitals.VitalSignsTime = model.VitalSignsTime;
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 3;
             }
         }
 
@@ -305,23 +307,23 @@ namespace AmbulancePCR.Services
                 var entity =
                     ctx
                         .Incidents
-                        .Single(e => e.Id == id && e.AuthorID == _userId);
+                        .Single(e => e.PatientCareReportId == id && e.AuthorID == _userId);
                 
                 var vitals =
                     ctx
                     .Vitals
-                    .Single(v => v.IncidentNumber == entity.IncidentNumber);
+                    .FirstOrDefault(v => v.IncidentNumber == entity.IncidentNumber);
 
                 var pt =
                     ctx
                     .PatientInformation
-                    .Single(p => p.IncidentNumber == entity.IncidentNumber);
+                    .FirstOrDefault(p => p.IncidentNumber == entity.IncidentNumber);
 
                 ctx.Incidents.Remove(entity);
                 ctx.Vitals.Remove(vitals);
                 ctx.PatientInformation.Remove(pt);
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 3;
             }
         }
     }

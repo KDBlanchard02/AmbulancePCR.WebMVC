@@ -11,9 +11,8 @@ namespace AmbulancePCR.Data
     public class PatientInformation
     {
         [Key]
-        [Display(Name = "Patient ID")]
-        public int PatientID { get; set; }
-        
+        public int PatientId { get; set; }
+
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
 
@@ -28,7 +27,8 @@ namespace AmbulancePCR.Data
         public int PtAge { get; set; }
         [Required]
         [Display(Name = "Patient Date Of Birth")]
-        public DateTime PtDateOfBirth { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? PtDateOfBirth { get; set; }
         [Required]
         [Display(Name = "Patient Gender")]
         public string PtGender { get; set; }
