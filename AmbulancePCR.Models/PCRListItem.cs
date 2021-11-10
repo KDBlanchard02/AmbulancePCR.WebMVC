@@ -12,8 +12,6 @@ namespace AmbulancePCR.Models
     {
         [Display(Name = "PCR ID")]
         public int PatientCareReportId { get; set; }
-        [Display(Name = "Patient Last Name")]
-        public string PtLastName { get; set; }
         [Display(Name = "Primary Care Provider")]
         public string PrimaryCareProvider { get; set; }
         [Display(Name = "Incident Date")]

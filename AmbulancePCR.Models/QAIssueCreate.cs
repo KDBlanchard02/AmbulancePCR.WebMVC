@@ -21,9 +21,7 @@ namespace AmbulancePCR.Models
         [Display(Name = "Supervisor Name")]
         public string SupervisorName { get; set; }
 
-        [Display(Name = "Primary Care Provider")]
-        public string PrimaryCareProvider { get; set; }
-        [Display(Name = "Patient Last Name")]
-        public string PtLastName { get; set; }
+        [Display(Name = "Resolved?")]
+        public bool IsResolved { get; set; }
     }
 }

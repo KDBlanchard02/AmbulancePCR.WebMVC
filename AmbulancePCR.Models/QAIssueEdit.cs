@@ -9,9 +9,9 @@ namespace AmbulancePCR.Models
 {
     public class QAIssueEdit
     {
-        public int MyProperty { get; set; }
         public string Note { get; set; }
         [Display(Name = "Resolved?")]
         public bool IsResolved { get; set; }
+        public int IssueID { get; set; }
     }
 }

@@ -140,12 +140,12 @@ namespace AmbulancePCR.Services
                 var ptinfo =
                     ctx
                         .PatientInformation
-                        .FirstOrDefault(p => p.IncidentNumber == entity.IncidentNumber);
+                        .First(p => p.IncidentNumber == entity.IncidentNumber);
 
                 var vitals =
                     ctx
                         .Vitals
-                        .FirstOrDefault(v => v.IncidentNumber == entity.IncidentNumber);
+                        .First(v => v.IncidentNumber == entity.IncidentNumber);
 
                 return
                     new PCRDetail

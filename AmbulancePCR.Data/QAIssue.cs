@@ -12,19 +12,21 @@ namespace AmbulancePCR.Data
     {
         [Key]
         public int IssueID { get; set; }
-        [ForeignKey("Incident")]
+
         public int IncidentNumber { get; set; }
-        public Incident Incident { get; set; }
         [Required]
         public string Note { get; set; }
-        [Required]
+
         public string PrimaryCareProvider { get; set; }
-        [Required]
+
         public string PtLastName { get; set; }
         public PatientInformation PatientInformation { get; set; }
         public bool IsResolved { get; set; }
         public DateTimeOffset DateCreated { get; set; }
+        public DateTimeOffset DateModified { get; set; }
         [Required]
         public string SupervisorName { get; set; }
+        [Required]
+        public Guid AuthorID { get; set; }
     }
 }

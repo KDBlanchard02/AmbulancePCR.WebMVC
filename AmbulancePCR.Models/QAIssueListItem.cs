@@ -11,8 +11,6 @@ namespace AmbulancePCR.Models
     {
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
-        [Display(Name = "Primary Care Provider")]
-        public string PrimaryCareProvider { get; set; }
         [Display(Name = "Resolved?")]
         public bool IsResolved { get; set; }
         [Display(Name = "Date Created")]

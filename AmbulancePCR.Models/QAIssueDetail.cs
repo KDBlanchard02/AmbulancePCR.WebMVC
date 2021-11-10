@@ -24,6 +24,8 @@ namespace AmbulancePCR.Models
         public bool IsResolved { get; set; }
         [Display(Name = "Date Created")]
         public DateTimeOffset DateCreated { get; set; }
+        [Display(Name = "Date Modified")]
+        public DateTimeOffset DateModified { get; set; }
         [Display(Name = "Supervisor Name")]
         public string SupervisorName { get; set; }
     }
