@@ -11,17 +11,19 @@ namespace AmbulancePCR.Models
 {
     public class QAIssueCreate
     {
-        [ForeignKey("Incident")]
+        [Required]
+        [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
-        public Incident Incident { get; set; }
         [Required]
         public string Note { get; set; }
+
         [Required]
+        [Display(Name = "Supervisor Name")]
+        public string SupervisorName { get; set; }
+
+        [Display(Name = "Primary Care Provider")]
         public string PrimaryCareProvider { get; set; }
-        [Required]
+        [Display(Name = "Patient Last Name")]
         public string PtLastName { get; set; }
-        public PatientInformation PatientInformation { get; set; }
-        public bool IsResolved { get; set; }
-        public DateTimeOffset DateCreated { get; set; }
     }
 }

@@ -73,6 +73,10 @@
     <Compile Include="Migrations\202111100314300_savedThree.Designer.cs">
       <DependentUpon>202111100314300_savedThree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111100414212_saved4.cs" />
+    <Compile Include="Migrations\202111100414212_saved4.Designer.cs">
+      <DependentUpon>202111100414212_saved4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatientInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111100314300_savedThree.resx">
       <DependentUpon>202111100314300_savedThree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111100414212_saved4.resx">
+      <DependentUpon>202111100414212_saved4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

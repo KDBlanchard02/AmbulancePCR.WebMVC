@@ -24,5 +24,7 @@ namespace AmbulancePCR.Data
         public PatientInformation PatientInformation { get; set; }
         public bool IsResolved { get; set; }
         public DateTimeOffset DateCreated { get; set; }
+        [Required]
+        public string SupervisorName { get; set; }
     }
 }

@@ -29,20 +29,14 @@ namespace AmbulancePCR.Data
         [DataType(DataType.Date)]
         public DateTime? IncidentDate { get; set; }
 
-        [Required]
         [Display(Name = "Unit Notified")]
         public TimeSpan UnitNotified { get; set; }
-        [Required]
         [Display(Name = "En Route")]
         public TimeSpan EnRoute { get; set; }
-        [Required]
         [Display(Name = "On Scene")]
         public TimeSpan OnScene { get; set; }
-        [Required]
         public TimeSpan Transporting { get; set; }
-        [Required]
         public TimeSpan Destination { get; set; }
-        [Required]
         [Display(Name = "In Service")]
         public TimeSpan InService { get; set; }
 

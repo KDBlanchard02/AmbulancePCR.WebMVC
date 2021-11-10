@@ -21,7 +21,15 @@ namespace AmbulancePCR.Services
         {
             var ctx = new ApplicationDbContext();
 
-           
+            var incident =
+                ctx
+                .Incidents
+                .FirstOrDefault(i => i.IncidentNumber == model.IncidentNumber);
+
+            var patient =
+                ctx
+                .PatientInformation
+                .FirstOrDefault(p => p.IncidentNumber == model.IncidentNumber);
 
             var entity =
                 new QAIssue()
@@ -29,8 +37,10 @@ namespace AmbulancePCR.Services
                     IncidentNumber = model.IncidentNumber,
                     DateCreated = DateTimeOffset.Now,
                     Note = model.Note,
-                    //PtLastName = pt,
-                    PrimaryCareProvider = model.Incident.PrimaryCareProvider
+                    SupervisorName = model.SupervisorName,
+                    PrimaryCareProvider = incident.PrimaryCareProvider,
+                    PtLastName = patient.PtLastName,
+                    IsResolved = false
                 };
 
             using (ctx)

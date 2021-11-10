@@ -29,9 +29,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.PtLastName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.PrimaryCareProvider)
         </td>
         <td>
@@ -42,8 +39,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PatientCareReportId }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Details", "Details", new { id = item.PatientCareReportId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PatientCareReportId })
         </td>
     </tr>
 }
