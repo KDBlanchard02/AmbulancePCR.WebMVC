@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: azure;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -26,26 +27,14 @@ textarea {
 table {
     border: inset;
     border-width: medium;
-}
-
-p.action {
-    border: inset;
-    border-radius: 4px;
-    border-color: black;
-    padding: 4px;
-    background-color: lightsteelblue;
-    width: 96px;
-    height: 32px;
-    text-align: center;
-    color: black;
+    background-color: aliceblue;
 }
 
 p.tableAction {
     border: inset;
-    border-radius: 4px;
-    border-color: black;
+    border-width: medium;
     padding: 4px;
-    background-color: lightsteelblue;
+    background-color: aliceblue;
     width: 156px;
     height: 32px;
     text-align: center;
