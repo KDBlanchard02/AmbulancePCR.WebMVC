@@ -135,7 +135,7 @@ namespace AmbulancePCR.Services
                 var entity =
                     ctx
                         .Incidents
-                        .Single(e => e.PatientCareReportId == id && e.AuthorID == _userId);
+                        .First(e => e.PatientCareReportId == id && e.AuthorID == _userId);
 
                 var ptinfo =
                     ctx

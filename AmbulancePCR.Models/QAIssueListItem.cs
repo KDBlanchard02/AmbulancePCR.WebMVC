@@ -9,6 +9,8 @@ namespace AmbulancePCR.Models
 {
     public class QAIssueListItem
     {
+        [Display(Name = "Issue ID")]
+        public int IssueID { get; set; }
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
         [Display(Name = "Resolved?")]
