@@ -261,6 +261,8 @@
     <Content Include="Views\PCR\Details.cshtml" />
     <Content Include="Views\PCR\Delete.cshtml" />
     <Content Include="Views\QAIssue\Details.cshtml" />
+    <Content Include="Views\QAIssue\Edit.cshtml" />
+    <Content Include="Views\QAIssue\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

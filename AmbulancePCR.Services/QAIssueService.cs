@@ -109,7 +109,7 @@ namespace AmbulancePCR.Services
             };
         }
 
-        public bool DeleteIncident(int id)
+        public bool DeleteQAIssue(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {

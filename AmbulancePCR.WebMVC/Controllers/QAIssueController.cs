@@ -72,5 +72,69 @@ namespace AmbulancePCR.WebMVC.Controllers
 
             return View(model);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var service = CreateQAIssueService();
+            var detail = service.GetQAIssueById(id);
+            var model =
+                new QAIssueEdit
+                {
+                    Note = detail.Note,
+                    IsResolved = detail.IsResolved,
+                    IssueID = detail.IssueID
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, QAIssueEdit model)
+        {
+            try
+            {
+                if (!ModelState.IsValid) { return View(model); }
+
+                model.IssueID = id;
+
+                var service = CreateQAIssueService();
+
+                if (service.UpdateQAIssue(model))
+                {
+                    TempData["SaveResult"] = "Issue has been updated.";
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("", "Issue could not be updated.");
+                return View(model);
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Missing required values.");
+                return View(model);
+            }
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateQAIssueService();
+            var model = svc.GetQAIssueById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteIssue(int id)
+        {
+            var service = CreateQAIssueService();
+
+            service.DeleteQAIssue(id);
+
+            TempData["SaveResult"] = "Issue was deleted.";
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -4,13 +4,37 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>DeletePCR</h2>
+<h2>Delete PCR</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>PCRDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <style type="text/css">
+
+        dl {
+            display: flex;
+            flex-flow: row wrap;
+            border: inset;
+            border-width: medium;
+            background-color: white;
+        }
+
+        dt {
+            flex-basis: 20%;
+            padding: 2px 4px;
+            background: #333;
+            text-align: right;
+            color: #fff;
+        }
+
+        dd {
+            flex-basis: 70%;
+            flex-grow: 1;
+            margin: 0;
+            padding: 2px 4px;
+            border-bottom: 1px solid #333;
+        }
+    </style>
+    <dl>
         <dt>
             @Html.DisplayNameFor(model => model.PatientCareReportId)
         </dt>
