@@ -24,12 +24,35 @@ namespace AmbulancePCR.Data
         [Required]
         [Display(Name = "Disposition/Outcome")]
         public string Disposition { get; set; }
+
+        /*public static class DispositionSelect
+        {
+            public static String Emergency { get { return "Transported (Emergency)"; } }
+            public static String NonEmergent { get { return "Transported (Non-Emergent)"; } }
+            public static String Refusal { get { return "Patient Refusal"; } }
+            public static String Cancelled { get { return "Cancelled"; } }
+            public static String NoTreatmentRequired { get { return "No Treatment Required"; } }
+            public static String NoPatientIdentified { get { return "No Patient Identified"; } }
+        }*/
+
         [Required]
         [Display(Name = "Scene Address")]
         public string SceneAddress { get; set; }
         [Required]
         [Display(Name = "CMS Level")]
         public string CmsLevel { get; set; }
+
+       /* public static class CmsLevels
+        {
+            public static String BLS { get { return "Basic Life Support (BLS)"; } }
+            public static String BLSEmergency { get { return "Basic Life Support (BLS) - Emergency"; } }
+            public static String ALSOne { get { return "Advanced Life Support, Level 1 (ALS1)"; } }
+            public static String ALSOneEmergency { get { return "Advanced Life Support, Level 1 (ALS1) - Emergency"; } }
+            public static String ALSTwo { get { return "Advanced Life Support, Level 2 (ALS2)"; } }
+            public static String SCT { get { return "Specialty Care Transport (SCT)"; } }
+            public static String PI { get { return "Paramedic Intercept (PI)"; } }
+        }*/
+
         [Required]
         [Display(Name = "Vehicle #")]
         public int VehicleNumber { get; set; }
@@ -73,13 +96,24 @@ namespace AmbulancePCR.Data
         public string DestinationAddress { get; set; }
         [Required]
         public string Reason { get; set; }
+
         [Required]
         public string Type { get; set; }
         [Required]
         [Display(Name = "Pt Position")]
         public string PtPosition { get; set; }
 
-
+        /*public static class PatientPositions
+        {
+            public static String Supine { get { return "Supine"; } }
+            public static String Prone { get { return "Prone"; } }
+            public static String RightLateral { get { return "Right Lateral Recumbent"; } }
+            public static String LeftLateral { get { return "Left Lateral Recumbent"; } }
+            public static String Fowlers { get { return "Fowler's"; } }
+            public static String SemiFowlers { get { return "Semi-Fowler's"; } }
+            public static String Trendelenberg { get { return "Trendelenberg"; } }
+            public static String Sitting { get { return "Sitting"; } }
+        }*/
 
         [Required]
         [Display(Name = "Primary Symptom")]

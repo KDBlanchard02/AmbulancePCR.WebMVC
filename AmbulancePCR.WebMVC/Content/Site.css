@@ -24,10 +24,10 @@ textarea {
     max-width: 280px;
 }
 
-table {
+table.table {
     border: inset;
     border-width: medium;
-    background-color: aliceblue;
+    background-color: lightblue;
 }
 
 p.tableAction {
@@ -48,6 +48,7 @@ a{
 div.jumbotron {
     background-image: url(/Images/ambo2.jpg);
     background-size: cover;
+    margin-top: 48px;
 }
 
 p.lead {
@@ -68,5 +69,11 @@ h1#title {
     justify-content: center;
     left: 600px;
 }
+
+div#navBar {
+    background-color: antiquewhite;
+}
+
+
 
 

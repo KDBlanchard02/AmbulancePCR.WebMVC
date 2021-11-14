@@ -50,21 +50,21 @@ namespace AmbulancePCR.Data
         [Required]
         [Display(Name = "GCS (Verbal)")]
         [Range(1, 5)]
-        public int GCSVerbal { get; set; }
+        public string GCSVerbal { get; set; }
         [Required]
         [Display(Name = "GCS (Motor)")]
         [Range(1, 6)]
-        public int GCSMotor { get; set; }
+        public string GCSMotor { get; set; }
         [Required]
         [Display(Name = "GCS (Eyes)")]
         [Range(1, 4)]
-        public int GCSEyes { get; set; }
+        public string GCSEyes { get; set; }
         [Display(Name = "GCS (Total)")]
         public int GCSTotal 
         { 
             get
             {
-                int total = (GCSEyes + GCSMotor + GCSVerbal);
+                int total = (Int32.Parse(GCSEyes) + Int32.Parse(GCSMotor) + Int32.Parse(GCSVerbal));
                 return total;
             }
         }

@@ -54,7 +54,8 @@ namespace AmbulancePCR.Services
                             IncidentNumber = e.IncidentNumber,
                             IsResolved = e.IsResolved,
                             DateCreated = e.DateCreated,
-                            SupervisorName = e.SupervisorName
+                            SupervisorName = e.SupervisorName,
+                            IssueID = e.IssueID
                         }
                         );
                 return query.ToArray();
@@ -68,7 +69,7 @@ namespace AmbulancePCR.Services
                 var entity =
                     ctx
                         .Issues
-                        .Single(e => e.IssueID == id && e.AuthorID == _userId);
+                        .First(e => e.IssueID == id && e.AuthorID == _userId);
                 var incident =
                     ctx
                     .Incidents

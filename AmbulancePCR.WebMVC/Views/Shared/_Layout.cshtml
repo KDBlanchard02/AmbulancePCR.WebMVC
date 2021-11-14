@@ -9,7 +9,12 @@
     <link type="text/css" rel="stylesheet" href="~/Content/Site.css">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <style>
+        div#navBar {
+            background-color: black;
+        }
+    </style>
+    <div id="navBar" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,13 +22,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("AmbulancePCR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("AmbulancePCR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "color:white" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                    <li>@Html.ActionLink("PCR", "Index", "PCR")</li>
-                    <li>@Html.ActionLink("QAIssue", "Index", "QAIssue")</li>
+                    <li>@Html.ActionLink("PCR", "Index", "PCR", null, new { style = "color:white" })</li>
+                    <li>@Html.ActionLink("Issues", "Index", "QAIssue", null, new { style = "color:white" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace AmbulancePCR.WebMVC.Controllers
 {
+    [Authorize]
     public class QAIssueController : Controller
     {
         // GET: QAIssue
@@ -23,6 +24,7 @@ namespace AmbulancePCR.WebMVC.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -35,6 +37,7 @@ namespace AmbulancePCR.WebMVC.Controllers
             return service;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(QAIssueCreate model)
@@ -60,6 +63,14 @@ namespace AmbulancePCR.WebMVC.Controllers
                 ModelState.AddModelError("", "Missing required values.");
                 return View(model);
             }
+        }
+
+        public ActionResult Details(int id)
+        {
+            var svc = CreateQAIssueService();
+            var model = svc.GetQAIssueById(id);
+
+            return View(model);
         }
     }
 }

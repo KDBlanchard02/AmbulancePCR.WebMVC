@@ -153,13 +153,13 @@ namespace AmbulancePCR.Models
         public int Oximetry { get; set; }
         [Required]
         [Display(Name = "GCS (Verbal)")]
-        public int GCSVerbal { get; set; }
+        public string GCSVerbal { get; set; }
         [Required]
         [Display(Name = "GCS (Motor)")]
-        public int GCSMotor { get; set; }
+        public string GCSMotor { get; set; }
         [Required]
         [Display(Name = "GCS (Eyes)")]
-        public int GCSEyes { get; set; }
+        public string GCSEyes { get; set; }
         [Display(Name = "Blood Glucose")]
         public int BloodGlucose { get; set; }
         [Display(Name = "Temperature (°F)")]

@@ -6,9 +6,11 @@
 
 <h2>Issues</h2>
 
-<p class="action">
-    @Html.ActionLink("Create New", "Create")
+<p>
+    <a href="~/QAIssue/Create" class="btn btn-primary btn-lg">Create &raquo;</a>
 </p>
+
+
 <table class="table">
     <tr>
         <th>
@@ -26,28 +28,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IncidentNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsResolved)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupervisorName)
-        </td>
-        <td>
-            <p class="tableAction">
-                @Html.ActionLink("Edit", "Edit", new { id = item.IssueID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IssueID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IssueID })
-            </p>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsResolved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupervisorName)
+            </td>
+            <td>
+                <p class="tableAction">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IssueID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IssueID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IssueID })
+                </p>
+            </td>
+        </tr>
+    }
 
 </table>

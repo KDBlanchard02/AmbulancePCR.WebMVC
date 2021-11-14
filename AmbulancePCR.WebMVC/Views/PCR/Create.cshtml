@@ -31,7 +31,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Disposition, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Disposition, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Disposition, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Transported (Emergency)", Value = "Transported (Emergency)" },
+                     new SelectListItem{ Text="Transported (Non-Emergent)", Value = "Transported (Non-Emergent)" },
+                     new SelectListItem{ Text="Patient Refusal", Value = "Patient Refusal" },
+                     new SelectListItem{ Text="Cancelled", Value = "Cancelled" },
+                     new SelectListItem{ Text="No Treatment Required", Value = "No Treatment Required" },
+                     new SelectListItem{ Text="No Patient Identified", Value = "No Patient Identified" },
+                }, null, new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.Disposition, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -47,7 +56,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CmsLevel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CmsLevel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.CmsLevel, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Basic Life Support (BLS)", Value = "Basic Life Support (BLS)" },
+                     new SelectListItem{ Text="Basic Life Support (BLS) - Emergency", Value = "Basic Life Support (BLS) - Emergency" },
+                     new SelectListItem{ Text="Advanced Life Support, Level 1 (ALS1)", Value = "Advanced Life Support, Level 1 (ALS1)" },
+                     new SelectListItem{ Text="Advanced Life Support, Level 1 (ALS1) - Emergency", Value = "Advanced Life Support, Level 1 (ALS1) - Emergency" },
+                     new SelectListItem{ Text="Advanced Life Support, Level 2 (ALS2)", Value = "Advanced Life Support, Level 2 (ALS2)" },
+                     new SelectListItem{ Text="Specialty Care Transport (SCT)", Value = "Specialty Care Transport (SCT)" },
+                     new SelectListItem{ Text="Paramedic Intercept (PI)", Value = "Paramedic Intercept (PI)" },
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CmsLevel, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -159,7 +178,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Hospital (Emergency Room Bed)", Value = "Hospital (Emergency Room Bed)" },
+                     new SelectListItem{ Text="Hospital (Non-Emergency Room Bed)", Value = "Hospital (Non-Emergency Room Bed)" },
+                     new SelectListItem{ Text="Nursing Home/Skilled Nursing Facility", Value = "Nursing Home/Skilled Nursing Facility" },
+                     new SelectListItem{ Text="Psychiatric Hospital", Value = "Psychiatric Hospital" },
+                     new SelectListItem{ Text="Medical Office/Clinic", Value = "Medical Office/Clinic" },
+                     new SelectListItem{ Text="Residence", Value = "Residence" },
+                     new SelectListItem{ Text="Hospice", Value = "Hospice" },
+                     new SelectListItem{ Text="Other", Value = "Other" },
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -167,7 +197,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PtPosition, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PtPosition, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.PtPosition, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Supine", Value = "Supine" },
+                     new SelectListItem{ Text="Prone", Value = "Prone" },
+                     new SelectListItem{ Text="Right Lateral Recumbent", Value = "Right Lateral Recumbent" },
+                     new SelectListItem{ Text="Left Lateral Recumbent", Value = "Left Lateral Recumbent" },
+                     new SelectListItem{ Text="Fowler's", Value = "Fowler's" },
+                     new SelectListItem{ Text="Semi-Fowler's", Value = "Semi-Fowler's" },
+                     new SelectListItem{ Text="Trendelenberg", Value = "Trendelenberg" },
+                     new SelectListItem{ Text="Sitting", Value = "Sitting" },
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PtPosition, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -207,7 +248,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PCRNarrative, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PCRNarrative, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.PCRNarrative, new { htmlAttributes = new { @class = "form-control", rows = "8" } })
                 @Html.ValidationMessageFor(model => model.PCRNarrative, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -255,7 +296,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PtGender, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PtGender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.PtGender, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Male", Value = "Male" },
+                     new SelectListItem{ Text="Female", Value = "Female" },
+                     new SelectListItem{ Text="Other", Value = "Other" }
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PtGender, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -367,7 +414,20 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RespEffort, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RespEffort, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.RespEffort, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Normal", Value = "Normal" },
+                     new SelectListItem{ Text="Apnea", Value = "Apnea" },
+                     new SelectListItem{ Text="Dyspnea", Value = "Dyspnea" },
+                     new SelectListItem{ Text="Hypoventilation", Value = "Hypoventilation" },
+                     new SelectListItem{ Text="Hyperventilation", Value = "Hyperventilation" },
+                     new SelectListItem{ Text="Tachypnea", Value = "Tachypnea" },
+                     new SelectListItem{ Text="Kussmaul", Value = "Kussmaul" },
+                     new SelectListItem{ Text="Cheyne-Stokes", Value = "Cheyne-Stokes" },
+                     new SelectListItem{ Text="Biot", Value = "Biot" },
+                     new SelectListItem{ Text="Apneustic", Value = "Apneustic" }
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RespEffort, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -375,7 +435,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Rhythm, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Rhythm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Rhythm, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Normal", Value = "Normal" },
+                     new SelectListItem{ Text="Tachycardia", Value = "Tachycardia" },
+                     new SelectListItem{ Text="Bradycardia", Value = "Bradycardia" },
+                     new SelectListItem{ Text="Atrial Fibrillation", Value = "Atrial Fibrillation" },
+                     new SelectListItem{ Text="Atrial Flutter", Value = "Atrial Flutter" },
+                     new SelectListItem{ Text="Ventricular Fibrillation", Value = "Ventricular Fibrillation" },
+                     new SelectListItem{ Text="Ventricular Flutter", Value = "Ventricular Flutter" },
+                     new SelectListItem{ Text="Extrasystole", Value = "Extrasystole" },
+                     new SelectListItem{ Text="Asystole", Value = "Asystole" }
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Rhythm, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -383,7 +455,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.BPMethod, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BPMethod, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.BPMethod, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Manual-Auscultated", Value = "Manual-Auscultated" },
+                     new SelectListItem{ Text="Automated-Cuff", Value = "Automated-Cuff" },
+                     new SelectListItem{ Text="Palpated", Value = "Palpated" },
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.BPMethod, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -391,7 +469,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HRType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HRType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.HRType, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Pulse-Oximeter", Value = "Pulse-Oximeter" },
+                     new SelectListItem{ Text="Palpated", Value = "Palpated" },
+                     new SelectListItem{ Text="3-Lead ECG", Value = "3-Lead ECG" },
+                     new SelectListItem{ Text="5-Lead ECG", Value = "5-Lead ECG" },
+                     new SelectListItem{ Text="12-Lead ECG", Value = "12-Lead ECG" }
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HRType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -407,7 +493,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GCSVerbal, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GCSVerbal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.GCSVerbal, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Oriented - 5", Value = "5" },
+                     new SelectListItem{ Text="Confused - 4", Value = "4" },
+                     new SelectListItem{ Text="Inappropriate Words - 3", Value = "3" },
+                     new SelectListItem{ Text="Incomprehensible Sounds - 2", Value = "2" },
+                     new SelectListItem{ Text="No Verbal Response", Value = "1" }
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.GCSVerbal, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -415,7 +509,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GCSMotor, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GCSMotor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.GCSMotor, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Obeys Commands - 6", Value = "6" },
+                     new SelectListItem{ Text="Localizes Pain - 5", Value = "5" },
+                     new SelectListItem{ Text="Withdraws From Pain - 4", Value = "4" },
+                     new SelectListItem{ Text="Flexion Response to Pain - 3", Value = "3" },
+                     new SelectListItem{ Text="Extension Response to Pain - 2", Value = "2" },
+                     new SelectListItem{ Text="No Motor Response", Value = "1" }
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.GCSMotor, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -423,7 +526,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GCSEyes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GCSEyes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.GCSEyes, new List<SelectListItem>
+                {
+                     new SelectListItem{ Text="", Value = "" },
+                     new SelectListItem{ Text="Eyes Open Spontaneously - 4", Value = "4" },
+                     new SelectListItem{ Text="Eye Opening to Verbal Command - 3", Value = "3" },
+                     new SelectListItem{ Text="Eye Opening to Pain - 2", Value = "2" },
+                     new SelectListItem{ Text="No Response", Value = "1" }
+                }, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.GCSEyes, "", new { @class = "text-danger" })
             </div>
         </div>
