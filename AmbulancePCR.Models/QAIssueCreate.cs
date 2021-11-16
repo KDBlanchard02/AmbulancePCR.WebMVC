@@ -16,12 +16,11 @@ namespace AmbulancePCR.Models
         public int IncidentNumber { get; set; }
         [Required]
         public string Note { get; set; }
-
         [Required]
         [Display(Name = "Supervisor Name")]
         public string SupervisorName { get; set; }
-
         [Display(Name = "Resolved?")]
         public bool IsResolved { get; set; }
+        public string UserId { get; set; }
     }
 }

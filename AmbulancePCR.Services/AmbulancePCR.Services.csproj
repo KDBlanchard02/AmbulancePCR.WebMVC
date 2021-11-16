@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPCRService.cs" />
+    <Compile Include="IQAIssueService.cs" />
     <Compile Include="PCRService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QAIssueService.cs" />

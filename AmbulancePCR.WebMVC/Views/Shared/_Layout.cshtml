@@ -13,6 +13,13 @@
         div#navBar {
             background-color: black;
         }
+        img#star {
+            width: auto;
+            height: auto;
+            max-height: 40px;
+            max-width: 40px;
+            margin-top: 5px;
+        }
     </style>
     <div id="navBar" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -22,6 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <img id="star" src="~/Images/StarOfLife.png"/>
                 @Html.ActionLink("AmbulancePCR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "color:white" })
             </div>
             <div class="navbar-collapse collapse">

@@ -8,22 +8,15 @@ using System.Threading.Tasks;
 
 namespace AmbulancePCR.Services
 {
-    public class PCRService
+    public class PCRService : IPCRService
     {
-        private readonly Guid _userId;
-
-        public PCRService(Guid userId)
-        {
-            _userId = userId;
-        }
-
         public bool CreatePCR(PCRCreate model)
         {
             var entity =
                 new Incident()
                 {
                     DateCreated = DateTime.Now,
-                    AuthorID = _userId,
+                    AuthorID = Guid.Parse(model.UserId),
                     IncidentNumber = model.IncidentNumber,
                     Disposition = model.Disposition,
                     SceneAddress = model.SceneAddress,
@@ -106,14 +99,15 @@ namespace AmbulancePCR.Services
             }
         }
 
-        public IEnumerable<PCRListItem> GetPCRs()
+        public IEnumerable<PCRListItem> GetPCRs(string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var userIdNum = Guid.Parse(userId);
                 var query =
                     ctx
                     .Incidents
-                    .Where(e => e.AuthorID == _userId)
+                    .Where(e => e.AuthorID == userIdNum)
                     .Select(
                         e =>
                         new PCRListItem
@@ -121,21 +115,22 @@ namespace AmbulancePCR.Services
                             IncidentNumber = e.IncidentNumber,
                             IncidentDate = e.IncidentDate,
                             PatientCareReportId = e.PatientCareReportId,
-                            PrimaryCareProvider = e.PrimaryCareProvider
+                            PrimaryCareProvider = e.PrimaryCareProvider,
                         }
                         );
                 return query.ToArray();
             }
         }
 
-        public PCRDetail GetPCRById(int id)
+        public PCRDetail GetPCRById(int id, string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var userIdNum = Guid.Parse(userId);
                 var entity =
                     ctx
                         .Incidents
-                        .First(e => e.PatientCareReportId == id && e.AuthorID == _userId);
+                        .First(e => e.PatientCareReportId == id && e.AuthorID == userIdNum);
 
                 var ptinfo =
                     ctx
@@ -224,7 +219,7 @@ namespace AmbulancePCR.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
-                    ctx.Incidents.Single(e => e.PatientCareReportId == model.PatientCareReportId && e.AuthorID == _userId);
+                    ctx.Incidents.Single(e => e.PatientCareReportId == model.PatientCareReportId && e.AuthorID == Guid.Parse(model.UserId));
 
                 var ptinfo =
                     ctx
@@ -300,15 +295,15 @@ namespace AmbulancePCR.Services
             }
         }
 
-        public bool DeleteIncident(int id)
+        public bool DeleteIncident(int id, string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Incidents
-                        .Single(e => e.PatientCareReportId == id && e.AuthorID == _userId);
-                
+                        .Single(e => e.PatientCareReportId == id && e.AuthorID == Guid.Parse(userId));
+
                 var vitals =
                     ctx
                     .Vitals

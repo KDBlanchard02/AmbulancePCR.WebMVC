@@ -13,14 +13,16 @@ namespace AmbulancePCR.WebMVC.Controllers
     [Authorize]
     public class QAIssueController : Controller
     {
+        private readonly IQAIssueService _service;
+
+        public QAIssueController(IQAIssueService service)
+        {
+            _service = service;
+        }
         // GET: QAIssue
-        private ApplicationDbContext _db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new QAIssueService(userID);
-            var model = service.GetQAIssues();
-
+            var model = _service.GetQAIssues(User.Identity.GetUserId());
             return View(model);
         }
 
@@ -28,13 +30,6 @@ namespace AmbulancePCR.WebMVC.Controllers
         public ActionResult Create()
         {
             return View();
-        }
-
-        private QAIssueService CreateQAIssueService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new QAIssueService(userId);
-            return service;
         }
 
         [Authorize(Roles = "Admin")]
@@ -45,10 +40,9 @@ namespace AmbulancePCR.WebMVC.Controllers
             try
             {
                 if (!ModelState.IsValid) { return View(model); }
+                model.UserId = User.Identity.GetUserId();
 
-                var service = CreateQAIssueService();
-
-                if (service.CreateQAIssue(model))
+                if (_service.CreateQAIssue(model))
                 {
                     TempData["SaveResult"] = "Q/A Issue was created.";
                     return RedirectToAction("Index");
@@ -67,16 +61,15 @@ namespace AmbulancePCR.WebMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var svc = CreateQAIssueService();
-            var model = svc.GetQAIssueById(id);
+            var model = _service.GetQAIssueById(id, User.Identity.GetUserId());
 
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
-            var service = CreateQAIssueService();
-            var detail = service.GetQAIssueById(id);
+            var detail = _service.GetQAIssueById(id, User.Identity.GetUserId());
             var model =
                 new QAIssueEdit
                 {
@@ -87,6 +80,7 @@ namespace AmbulancePCR.WebMVC.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, QAIssueEdit model)
@@ -95,11 +89,10 @@ namespace AmbulancePCR.WebMVC.Controllers
             {
                 if (!ModelState.IsValid) { return View(model); }
 
+                model.UserId = User.Identity.GetUserId();
                 model.IssueID = id;
 
-                var service = CreateQAIssueService();
-
-                if (service.UpdateQAIssue(model))
+                if (_service.UpdateQAIssue(model))
                 {
                     TempData["SaveResult"] = "Issue has been updated.";
                     return RedirectToAction("Index");
@@ -115,23 +108,22 @@ namespace AmbulancePCR.WebMVC.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var svc = CreateQAIssueService();
-            var model = svc.GetQAIssueById(id);
+            var model = _service.GetQAIssueById(id, User.Identity.GetUserId());
 
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteIssue(int id)
         {
-            var service = CreateQAIssueService();
-
-            service.DeleteQAIssue(id);
+            _service.DeleteQAIssue(id, User.Identity.GetUserId());
 
             TempData["SaveResult"] = "Issue was deleted.";
             return RedirectToAction("Index");

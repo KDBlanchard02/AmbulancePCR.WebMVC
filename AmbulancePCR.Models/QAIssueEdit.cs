@@ -13,5 +13,6 @@ namespace AmbulancePCR.Models
         [Display(Name = "Resolved?")]
         public bool IsResolved { get; set; }
         public int IssueID { get; set; }
+        public string UserId { get; set; }
     }
 }

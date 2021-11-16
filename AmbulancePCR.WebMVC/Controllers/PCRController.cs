@@ -13,27 +13,22 @@ namespace AmbulancePCR.WebMVC.Controllers
     [Authorize]
     public class PCRController : Controller
     {
-        private ApplicationDbContext _db = new ApplicationDbContext();
+        private readonly IPCRService _service;
+
+        public PCRController(IPCRService service)
+        {
+            _service = service;
+        }
         // GET: PCR
         public ActionResult Index()
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new PCRService(userID);
-            var model = service.GetPCRs();
-
+            var model = _service.GetPCRs(User.Identity.GetUserId());
             return View(model);
         }
 
         public ActionResult Create()
         {
             return View();
-        }
-
-        private PCRService CreatePCRService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new PCRService(userId);
-            return service;
         }
 
         [HttpPost]
@@ -44,9 +39,9 @@ namespace AmbulancePCR.WebMVC.Controllers
             {
                 if (!ModelState.IsValid) { return View(model); }
 
-                var service = CreatePCRService();
+                model.UserId = User.Identity.GetUserId();
 
-                if (service.CreatePCR(model))
+                if (_service.CreatePCR(model))
                 {
                     TempData["SaveResult"] = "Your PCR was created.";
                     return RedirectToAction("Index");
@@ -65,16 +60,14 @@ namespace AmbulancePCR.WebMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var svc = CreatePCRService();
-            var model = svc.GetPCRById(id);
+            var model = _service.GetPCRById(id, User.Identity.GetUserId());
 
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var service = CreatePCRService();
-            var detail = service.GetPCRById(id);
+            var detail = _service.GetPCRById(id, User.Identity.GetUserId());
             var model =
                 new PCREdit
                 {
@@ -152,10 +145,9 @@ namespace AmbulancePCR.WebMVC.Controllers
                 if (!ModelState.IsValid) { return View(model); }
 
                 model.PatientCareReportId = id;
+                model.UserId = User.Identity.GetUserId();
 
-                var service = CreatePCRService();
-
-                if (service.UpdatePCR(model))
+                if (_service.UpdatePCR(model))
                 {
                     TempData["SaveResult"] = "Your PCR was updated.";
                     return RedirectToAction("Index");
@@ -174,8 +166,7 @@ namespace AmbulancePCR.WebMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var svc = CreatePCRService();
-            var model = svc.GetPCRById(id);
+            var model = _service.GetPCRById(id, User.Identity.GetUserId());
 
             return View(model);
         }
@@ -185,9 +176,8 @@ namespace AmbulancePCR.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePCR(int id)
         {
-            var service = CreatePCRService();
 
-            service.DeleteIncident(id);
+            _service.DeleteIncident(id, User.Identity.GetUserId());
 
             TempData["SaveResult"] = "Your PCR was deleted.";
             return RedirectToAction("Index");

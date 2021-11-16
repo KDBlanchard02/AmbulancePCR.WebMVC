@@ -8,15 +8,8 @@ using System.Threading.Tasks;
 
 namespace AmbulancePCR.Services
 {
-    public class QAIssueService
+    public class QAIssueService : IQAIssueService
     {
-        private readonly Guid _userId;
-
-        public QAIssueService(Guid userId)
-        {
-            _userId = userId;
-        }
-
         public bool CreateQAIssue(QAIssueCreate model)
         {
             var ctx = new ApplicationDbContext();
@@ -24,7 +17,7 @@ namespace AmbulancePCR.Services
             var entity =
                 new QAIssue()
                 {
-                    AuthorID = _userId,
+                    AuthorID = Guid.Parse(model.UserId),
                     IncidentNumber = model.IncidentNumber,
                     DateCreated = DateTimeOffset.Now,
                     Note = model.Note,
@@ -39,14 +32,15 @@ namespace AmbulancePCR.Services
             }
         }
 
-        public IEnumerable<QAIssueListItem> GetQAIssues()
+        public IEnumerable<QAIssueListItem> GetQAIssues(string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var userIdNum = Guid.Parse(userId);
                 var query =
                     ctx
                     .Issues
-                    .Where(e => e.AuthorID == _userId)
+                    .Where(e => e.AuthorID == userIdNum)
                     .Select(
                         e =>
                         new QAIssueListItem
@@ -62,14 +56,15 @@ namespace AmbulancePCR.Services
             }
         }
 
-        public QAIssueDetail GetQAIssueById(int id)
+        public QAIssueDetail GetQAIssueById(int id, string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var userIdNum = Guid.Parse(userId);
                 var entity =
                     ctx
                         .Issues
-                        .First(e => e.IssueID == id && e.AuthorID == _userId);
+                        .First(e => e.IssueID == id && e.AuthorID == userIdNum);
                 var incident =
                     ctx
                     .Incidents
@@ -101,7 +96,7 @@ namespace AmbulancePCR.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
-                    ctx.Issues.Single(e => e.IssueID == model.IssueID && e.AuthorID == _userId);
+                    ctx.Issues.Single(e => e.IssueID == model.IssueID && e.AuthorID == Guid.Parse(model.UserId));
                 entity.Note = model.Note;
                 entity.IsResolved = model.IsResolved;
                 entity.DateModified = DateTime.Now;
@@ -109,14 +104,15 @@ namespace AmbulancePCR.Services
             };
         }
 
-        public bool DeleteQAIssue(int id)
+        public bool DeleteQAIssue(int id, string userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var userIdNum = Guid.Parse(userId);
                 var entity =
                     ctx
                         .Issues
-                        .Single(e => e.IssueID == id && e.AuthorID == _userId);
+                        .Single(e => e.IssueID == id && e.AuthorID == userIdNum);
 
                 ctx.Issues.Remove(entity);
                 return ctx.SaveChanges() == 1;

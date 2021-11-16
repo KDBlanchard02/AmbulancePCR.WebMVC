@@ -11,6 +11,7 @@ namespace AmbulancePCR.Models
 {
     public class PCREdit
     {
+        public string UserId { get; set; }
         public int PatientCareReportId { get; set; }
         [Display(Name = "Incident #")]
         public int IncidentNumber { get; set; }
