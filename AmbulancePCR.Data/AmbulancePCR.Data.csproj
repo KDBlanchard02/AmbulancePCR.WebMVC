@@ -57,41 +57,9 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Incident.cs" />
-    <Compile Include="Migrations\202111100049568_initial.cs" />
-    <Compile Include="Migrations\202111100049568_initial.Designer.cs">
-      <DependentUpon>202111100049568_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111100300021_saved.cs" />
-    <Compile Include="Migrations\202111100300021_saved.Designer.cs">
-      <DependentUpon>202111100300021_saved.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111100309262_saved2.cs" />
-    <Compile Include="Migrations\202111100309262_saved2.Designer.cs">
-      <DependentUpon>202111100309262_saved2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111100314300_savedThree.cs" />
-    <Compile Include="Migrations\202111100314300_savedThree.Designer.cs">
-      <DependentUpon>202111100314300_savedThree.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111100414212_saved4.cs" />
-    <Compile Include="Migrations\202111100414212_saved4.Designer.cs">
-      <DependentUpon>202111100414212_saved4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111100457092_saved5.cs" />
-    <Compile Include="Migrations\202111100457092_saved5.Designer.cs">
-      <DependentUpon>202111100457092_saved5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111100522182_saved6.cs" />
-    <Compile Include="Migrations\202111100522182_saved6.Designer.cs">
-      <DependentUpon>202111100522182_saved6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111100524122_saved7.cs" />
-    <Compile Include="Migrations\202111100524122_saved7.Designer.cs">
-      <DependentUpon>202111100524122_saved7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111140840365_savedChanges.cs" />
-    <Compile Include="Migrations\202111140840365_savedChanges.Designer.cs">
-      <DependentUpon>202111140840365_savedChanges.cs</DependentUpon>
+    <Compile Include="Migrations\202111162207565_initial.cs" />
+    <Compile Include="Migrations\202111162207565_initial.Designer.cs">
+      <DependentUpon>202111162207565_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatientInformation.cs" />
@@ -104,32 +72,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111100049568_initial.resx">
-      <DependentUpon>202111100049568_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111100300021_saved.resx">
-      <DependentUpon>202111100300021_saved.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111100309262_saved2.resx">
-      <DependentUpon>202111100309262_saved2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111100314300_savedThree.resx">
-      <DependentUpon>202111100314300_savedThree.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111100414212_saved4.resx">
-      <DependentUpon>202111100414212_saved4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111100457092_saved5.resx">
-      <DependentUpon>202111100457092_saved5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111100522182_saved6.resx">
-      <DependentUpon>202111100522182_saved6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111100524122_saved7.resx">
-      <DependentUpon>202111100524122_saved7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111140840365_savedChanges.resx">
-      <DependentUpon>202111140840365_savedChanges.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111162207565_initial.resx">
+      <DependentUpon>202111162207565_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,13 +20,13 @@ namespace AmbulancePCR.Data.Migrations
                         SceneAddress = c.String(nullable: false),
                         CmsLevel = c.String(nullable: false),
                         VehicleNumber = c.Int(nullable: false),
-                        IncidentDate = c.DateTimeOffset(nullable: false, precision: 7),
-                        UnitNotified = c.DateTimeOffset(nullable: false, precision: 7),
-                        EnRoute = c.DateTimeOffset(nullable: false, precision: 7),
-                        OnScene = c.DateTimeOffset(nullable: false, precision: 7),
-                        Transporting = c.DateTimeOffset(nullable: false, precision: 7),
-                        Destination = c.DateTimeOffset(nullable: false, precision: 7),
-                        InService = c.DateTimeOffset(nullable: false, precision: 7),
+                        IncidentDate = c.DateTime(nullable: false),
+                        UnitNotified = c.Time(nullable: false, precision: 7),
+                        EnRoute = c.Time(nullable: false, precision: 7),
+                        OnScene = c.Time(nullable: false, precision: 7),
+                        Transporting = c.Time(nullable: false, precision: 7),
+                        Destination = c.Time(nullable: false, precision: 7),
+                        InService = c.Time(nullable: false, precision: 7),
                         PrimaryCareProvider = c.String(nullable: false),
                         AmbulanceDriver = c.String(nullable: false),
                         LoadMileage = c.Double(nullable: false),
@@ -50,16 +50,17 @@ namespace AmbulancePCR.Data.Migrations
                         IssueID = c.Int(nullable: false, identity: true),
                         IncidentNumber = c.Int(nullable: false),
                         Note = c.String(nullable: false),
-                        PrimaryCareProvider = c.String(nullable: false),
-                        PtLastName = c.String(nullable: false),
+                        PrimaryCareProvider = c.String(),
+                        PtLastName = c.String(),
                         IsResolved = c.Boolean(nullable: false),
                         DateCreated = c.DateTimeOffset(nullable: false, precision: 7),
+                        DateModified = c.DateTimeOffset(nullable: false, precision: 7),
+                        SupervisorName = c.String(nullable: false),
+                        AuthorID = c.Guid(nullable: false),
                         PatientInformation_PatientId = c.Int(),
                     })
                 .PrimaryKey(t => t.IssueID)
-                .ForeignKey("dbo.Incident", t => t.IncidentNumber, cascadeDelete: true)
                 .ForeignKey("dbo.PatientInformation", t => t.PatientInformation_PatientId)
-                .Index(t => t.IncidentNumber)
                 .Index(t => t.PatientInformation_PatientId);
             
             CreateTable(
@@ -170,12 +171,12 @@ namespace AmbulancePCR.Data.Migrations
                         BPMethod = c.String(),
                         HRType = c.String(),
                         Oximetry = c.Int(nullable: false),
-                        GCSVerbal = c.Int(nullable: false),
-                        GCSMotor = c.Int(nullable: false),
-                        GCSEyes = c.Int(nullable: false),
+                        GCSVerbal = c.String(nullable: false),
+                        GCSMotor = c.String(nullable: false),
+                        GCSEyes = c.String(nullable: false),
                         BloodGlucose = c.Int(nullable: false),
                         Temperature = c.Double(nullable: false),
-                        VitalSignsTime = c.DateTimeOffset(nullable: false, precision: 7),
+                        VitalSignsTime = c.Time(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.VitalsId);
             
@@ -188,13 +189,11 @@ namespace AmbulancePCR.Data.Migrations
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.QAIssue", "PatientInformation_PatientId", "dbo.PatientInformation");
-            DropForeignKey("dbo.QAIssue", "IncidentNumber", "dbo.Incident");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
             DropIndex("dbo.QAIssue", new[] { "PatientInformation_PatientId" });
-            DropIndex("dbo.QAIssue", new[] { "IncidentNumber" });
             DropTable("dbo.Vitals");
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");

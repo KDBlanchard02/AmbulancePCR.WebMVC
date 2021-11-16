@@ -13,7 +13,7 @@ namespace AmbulancePCR.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202111100049568_initial"; }
+            get { return "202111162207565_initial"; }
         }
         
         string IMigrationMetadata.Source
