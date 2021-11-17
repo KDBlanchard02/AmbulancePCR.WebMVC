@@ -6,7 +6,8 @@ For use of EMS professionals to document patient demographics/medical history, n
 
 On GitHub.com, navigate to the main page of the repository.
 
-Above the list of files, click  Code.
+Above the list of files, click &darr; Code.
+OR
 Open Git Bash.
 
 Change the current working directory to the location where you want the cloned directory.
