@@ -26,13 +26,11 @@ namespace AmbulancePCR.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(QAIssueCreate model)
@@ -66,7 +64,6 @@ namespace AmbulancePCR.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var detail = _service.GetQAIssueById(id, User.Identity.GetUserId());
@@ -80,7 +77,6 @@ namespace AmbulancePCR.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, QAIssueEdit model)
@@ -108,7 +104,6 @@ namespace AmbulancePCR.WebMVC.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
@@ -117,7 +112,6 @@ namespace AmbulancePCR.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
