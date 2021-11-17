@@ -16,6 +16,8 @@ Change the current working directory to the location where you want the cloned d
 
 Type git clone, and then paste the URL you copied earlier.
 
+Press **Enter** to create your local clone.
+
 ```
 $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 ```
