@@ -1,0 +1,8 @@
+{
+  "name": "AmbulancePCR",
+  "description": "Electronic Patient Care Report (ePCR) documentation system for EMS professionals to track incidents, patient demographics, vitals, narratives, and QA issues.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
