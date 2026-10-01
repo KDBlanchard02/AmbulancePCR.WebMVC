@@ -21,6 +21,3 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 ```
 Press **Enter** to create your local clone.
 
-## Azure Link
-
-[https://ambulancepcr.azurewebsites.net/](https://ambulancepcr.azurewebsites.net/)
